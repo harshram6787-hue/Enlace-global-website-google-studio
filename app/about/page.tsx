@@ -5,6 +5,7 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { LetsTalkModal } from '@/components/LetsTalkModal';
 import { PlaceholderModal } from '@/components/PlaceholderModal';
+import aboutHeroImg from '@/src/assets/images/about_hero_bg_1786610981214.jpg';
 import {
   Sparkles,
   ArrowRight,
@@ -79,7 +80,7 @@ export default function AboutPage() {
           {/* Background Image with Light Tint Overlay */}
           <div className="absolute inset-0 z-0">
             <img
-              src="/about_hero_bg.jpg"
+              src={aboutHeroImg.src}
               alt="Enlace Global team collaborating"
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover object-center"

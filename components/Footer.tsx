@@ -33,6 +33,15 @@ export function Footer({ onOpenContact, onOpenPlaceholder }: FooterProps) {
       return;
     }
 
+    if (target === 'industries') {
+      if (pathname === '/industries') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        router.push('/industries');
+      }
+      return;
+    }
+
     if (target === 'customer-experience' || target === 'revenue-growth' || target === 'back-office-operations') {
       if (pathname === '/services') {
         const el = document.getElementById(target);
@@ -64,23 +73,12 @@ export function Footer({ onOpenContact, onOpenPlaceholder }: FooterProps) {
     }
 
     if (target === 'advantages') {
-      if (pathname === '/about' || pathname === '/services' || pathname === '/career') {
-        router.push(`/#${target}`);
+      if (pathname === '/advantages') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        const el = document.getElementById(target);
-        if (el) {
-          const offset = 80;
-          const bodyRect = document.body.getBoundingClientRect().top;
-          const elementRect = el.getBoundingClientRect().top;
-          const elementPosition = elementRect - bodyRect;
-          const offsetPosition = elementPosition - offset;
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth',
-          });
-        }
+        router.push('/advantages');
       }
+      return;
     }
   };
 
@@ -98,7 +96,7 @@ export function Footer({ onOpenContact, onOpenPlaceholder }: FooterProps) {
               href="/"
               onClick={(e) => {
                 e.preventDefault();
-                if (pathname === '/about' || pathname === '/services' || pathname === '/career') {
+                if (pathname === '/about' || pathname === '/services' || pathname === '/industries' || pathname === '/career') {
                   router.push('/');
                 } else {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -147,10 +145,10 @@ export function Footer({ onOpenContact, onOpenPlaceholder }: FooterProps) {
               </li>
               <li>
                 <button
-                  onClick={() => onOpenPlaceholder('Industry Solutions', 'Custom BPO frameworks engineered for Financial Services, Healthcare, Technology, Retail, and Logistics.')}
+                  onClick={() => handleLinkClick('industries')}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Industry
+                  Industries
                 </button>
               </li>
               <li>

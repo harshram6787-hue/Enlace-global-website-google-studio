@@ -63,20 +63,23 @@ export function Navbar({ onOpenContact, onOpenPlaceholder }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [pathname]);
 
-  const navItems = [
+  interface NavItem {
+    label: string;
+    href: string;
+    sectionId: string;
+    isFuturePage?: boolean;
+    description?: string;
+  }
+
+  const navItems: NavItem[] = [
     { label: 'About Us', href: '/about', sectionId: 'about' },
     { label: 'Services', href: '/services', sectionId: 'services' },
-    {
-      label: 'Industry',
-      href: '#industry',
-      isFuturePage: true,
-      description: 'Explore Enlace Global solutions tailored for Financial Services, Healthcare, Tech, Retail, and Logistics.',
-    },
-    { label: 'Our Advantages', href: '/#advantages', sectionId: 'advantages' },
+    { label: 'Industries', href: '/industries', sectionId: 'industries' },
+    { label: 'Our Advantages', href: '/advantages', sectionId: 'advantages' },
     { label: 'Career', href: '/career', sectionId: 'career' },
   ];
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, item: typeof navItems[0]) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, item: NavItem) => {
     if (item.isFuturePage) {
       e.preventDefault();
       onOpenPlaceholder(item.label, item.description || '');
@@ -106,6 +109,28 @@ export function Navbar({ onOpenContact, onOpenPlaceholder }: NavbarProps) {
       return;
     }
 
+    if (item.sectionId === 'industries') {
+      e.preventDefault();
+      if (pathname === '/industries') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        router.push('/industries');
+      }
+      setMobileMenuOpen(false);
+      return;
+    }
+
+    if (item.sectionId === 'advantages') {
+      e.preventDefault();
+      if (pathname === '/advantages') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        router.push('/advantages');
+      }
+      setMobileMenuOpen(false);
+      return;
+    }
+
     if (item.sectionId === 'career') {
       e.preventDefault();
       if (pathname === '/career') {
@@ -116,34 +141,11 @@ export function Navbar({ onOpenContact, onOpenPlaceholder }: NavbarProps) {
       setMobileMenuOpen(false);
       return;
     }
-
-    if (item.sectionId === 'advantages') {
-      e.preventDefault();
-      if (pathname === '/about' || pathname === '/services' || pathname === '/career') {
-        router.push(`/#${item.sectionId}`);
-      } else {
-        const targetEl = document.getElementById(item.sectionId);
-        if (targetEl) {
-          const offset = 80;
-          const bodyRect = document.body.getBoundingClientRect().top;
-          const elementRect = targetEl.getBoundingClientRect().top;
-          const elementPosition = elementRect - bodyRect;
-          const offsetPosition = elementPosition - offset;
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth',
-          });
-        }
-      }
-      setMobileMenuOpen(false);
-      return;
-    }
   };
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    if (pathname === '/about' || pathname === '/services' || pathname === '/career') {
+    if (pathname === '/about' || pathname === '/services' || pathname === '/industries' || pathname === '/advantages' || pathname === '/career') {
       router.push('/');
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -173,7 +175,13 @@ export function Navbar({ onOpenContact, onOpenPlaceholder }: NavbarProps) {
           {/* RIGHT: Desktop Navigation Links */}
           <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
             {navItems.map((item) => {
-              const isActive = (pathname === '/about' && item.sectionId === 'about') || (pathname === '/services' && item.sectionId === 'services') || (pathname === '/career' && item.sectionId === 'career') || (pathname === '/' && activeSection === item.sectionId);
+              const isActive =
+                (pathname === '/about' && item.sectionId === 'about') ||
+                (pathname === '/services' && item.sectionId === 'services') ||
+                (pathname === '/industries' && item.sectionId === 'industries') ||
+                (pathname === '/advantages' && item.sectionId === 'advantages') ||
+                (pathname === '/career' && item.sectionId === 'career') ||
+                (pathname === '/' && activeSection === item.sectionId);
               return (
                 <a
                   key={item.label}
@@ -218,7 +226,13 @@ export function Navbar({ onOpenContact, onOpenPlaceholder }: NavbarProps) {
         <div className="md:hidden bg-white border-b border-emerald-100 shadow-xl animate-in slide-in-from-top-2 duration-200">
           <div className="px-4 pt-3 pb-6 space-y-2">
             {navItems.map((item) => {
-              const isActive = (pathname === '/about' && item.sectionId === 'about') || (pathname === '/services' && item.sectionId === 'services') || (pathname === '/career' && item.sectionId === 'career') || (pathname === '/' && activeSection === item.sectionId);
+              const isActive =
+                (pathname === '/about' && item.sectionId === 'about') ||
+                (pathname === '/services' && item.sectionId === 'services') ||
+                (pathname === '/industries' && item.sectionId === 'industries') ||
+                (pathname === '/advantages' && item.sectionId === 'advantages') ||
+                (pathname === '/career' && item.sectionId === 'career') ||
+                (pathname === '/' && activeSection === item.sectionId);
               return (
                 <a
                   key={item.label}

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import homeHeroImg from '@/src/assets/images/home_hero_bpo_1786610963903.jpg';
 
 interface HeroProps {
   onOpenContact: () => void;
@@ -80,8 +81,9 @@ export function Hero({ onOpenContact }: HeroProps) {
             <div className="relative mx-auto max-w-md lg:max-w-none bg-white rounded-2xl p-3 sm:p-4 shadow-2xl border border-emerald-100/80 shadow-emerald-soft group">
               <div className="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-slate-100">
                 <img
-                  src="/hero_bpo_female.jpg"
-                  alt="Enlace Global BPO specialist wearing headset with glowing world map background"
+                  src={homeHeroImg.src}
+                  alt="Enlace Global BPO specialist wearing headset with glowing network background"
+                  referrerPolicy="no-referrer"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
