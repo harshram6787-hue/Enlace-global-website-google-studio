@@ -13,7 +13,11 @@ export const metadata: Metadata = {
   title: 'Enlace Global | AI-Enabled BPO & Business Process Services',
   description: 'Combining human expertise, intelligent AI technology, and operational excellence for global enterprise business process solutions.',
   icons: {
-    icon: '/logo.svg',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png', sizes: '192x192' },
+    ],
+    apple: '/icon.png',
   },
 };
 

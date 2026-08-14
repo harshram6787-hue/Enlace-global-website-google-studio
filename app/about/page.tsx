@@ -73,10 +73,10 @@ export default function AboutPage() {
         onOpenPlaceholder={handleOpenPlaceholder}
       />
 
-      <main className="flex-grow pt-16 md:pt-20">
+      <main className="flex-grow">
         
         {/* ================= 1. HERO SECTION ================= */}
-        <section className="relative py-16 md:py-24 overflow-hidden min-h-[400px] flex items-center justify-center">
+        <section className="relative pt-24 pb-20 md:pt-32 md:pb-28 lg:pt-36 lg:pb-32 overflow-hidden min-h-[500px] md:min-h-[560px] flex items-center justify-center">
           {/* Background Image with Light Tint Overlay */}
           <div className="absolute inset-0 z-0">
             <img
@@ -86,18 +86,18 @@ export default function AboutPage() {
               className="w-full h-full object-cover object-center"
             />
             {/* Soft White Gradient Overlay to Keep Text Perfectly Readable While Showing Image */}
-            <div className="absolute inset-0 bg-gradient-to-b from-white/75 via-white/60 to-white/80" />
+            <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/65 to-white/85" />
             <div className="absolute inset-0 bg-emerald-950/10 pointer-events-none" />
           </div>
 
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-4 sm:space-y-5">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-5 sm:space-y-6">
             {/* Hero Main Heading */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.12]">
               About <span className="text-[#0D8A4E]">Enlace Global</span>
             </h1>
 
             {/* Hero Subheading */}
-            <p className="text-lg sm:text-xl md:text-2xl text-slate-800 max-w-3xl mx-auto font-semibold leading-relaxed drop-shadow-sm">
+            <p className="text-lg sm:text-xl md:text-2xl text-slate-800 max-w-3xl mx-auto font-medium sm:font-semibold leading-relaxed drop-shadow-sm">
               Building better business outcomes through people, technology and intelligent operations.
             </p>
           </div>

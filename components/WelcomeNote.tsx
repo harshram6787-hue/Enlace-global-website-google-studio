@@ -4,7 +4,7 @@ import React from 'react';
 
 export function WelcomeNote() {
   return (
-    <section id="about" className="pt-2 pb-4 md:pt-4 md:pb-6 bg-white relative">
+    <section id="about" className="py-16 md:py-24 bg-white relative">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
         
         {/* Subtle Section Label */}

@@ -8,7 +8,7 @@ import { PlaceholderModal } from '@/components/PlaceholderModal';
 import { IndustryDetailModal, DetailedIndustry } from '@/components/IndustryDetailModal';
 
 // Images generated for Industries page
-import heroBg from '@/src/assets/images/industries_hero_bg_1786612258727.jpg';
+import heroBg from '@/src/assets/images/about_hero_bg_1786610981214.jpg';
 import realEstateImg from '@/src/assets/images/ind_real_estate_1786612273727.jpg';
 import healthcareImg from '@/src/assets/images/ind_healthcare_1786612289224.jpg';
 import educationImg from '@/src/assets/images/ind_education_1786612305451.jpg';
@@ -220,49 +220,46 @@ export default function IndustriesPage() {
       />
 
       {/* ================= 1. HERO SECTION ================= */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#044729] via-[#086338] to-[#0D8A4E] text-white py-20 md:py-28">
-        {/* Background Visual Image with Overlay */}
-        <div className="absolute inset-0 z-0 opacity-25 mix-blend-overlay">
+      <section className="relative py-16 md:py-24 overflow-hidden min-h-[400px] flex items-center justify-center">
+        {/* Background Visual Image with Overlay (Matches Services Hero Style) */}
+        <div className="absolute inset-0 z-0">
           <img
             src={heroBg.src}
             alt="Interconnected industries powered by human AI collaboration"
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover object-center"
           />
+          {/* Soft Light Gradient Overlay for High Text Readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/65 to-white/85" />
+          <div className="absolute inset-0 bg-emerald-950/10 pointer-events-none" />
         </div>
 
-        {/* Ambient Subtle Emerald Glows */}
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-emerald-400/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-300/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-4 sm:space-y-6">
+          {/* Tagline Badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/90 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-semibold">
+            <Sparkles className="w-4 h-4 text-emerald-600" />
+            <span>Tailored BPO & Customer Experience Solutions</span>
+          </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl space-y-6 text-left">
-            {/* Tagline Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-300/30 text-emerald-200 text-xs sm:text-sm font-semibold backdrop-blur-md">
-              <Sparkles className="w-4 h-4 text-emerald-300" />
-              <span>Tailored BPO & Customer Experience Solutions</span>
-            </div>
+          {/* Main Heading */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.12]">
+            INDUSTRIES WE SERVE
+          </h1>
 
-            {/* Main Heading */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15]">
-              INDUSTRIES WE SERVE
-            </h1>
+          {/* Supporting Copy */}
+          <p className="text-lg sm:text-xl md:text-2xl text-slate-800 max-w-3xl mx-auto font-medium sm:font-semibold leading-relaxed drop-shadow-sm">
+            Industry-focused customer experience solutions powered by people, technology, AI, and automation.
+          </p>
 
-            {/* Supporting Copy */}
-            <p className="text-base sm:text-lg md:text-xl text-emerald-100/90 font-normal leading-relaxed max-w-2xl">
-              Industry-focused customer experience solutions powered by people, technology, AI, and automation.
-            </p>
-
-            {/* Primary CTA Button */}
-            <div className="pt-4 flex flex-wrap items-center gap-4">
-              <button
-                onClick={() => setContactOpen(true)}
-                className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full text-base font-bold text-[#044729] bg-white hover:bg-emerald-50 shadow-xl hover:shadow-2xl transform transition-all duration-200 active:scale-95 cursor-pointer"
-              >
-                <MessageSquare className="w-5 h-5 text-[#0D8A4E]" />
-                <span>LET&apos;S TALK</span>
-              </button>
-            </div>
+          {/* Primary CTA Button */}
+          <div className="pt-2 flex justify-center">
+            <button
+              onClick={() => setContactOpen(true)}
+              className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full text-base font-bold text-white bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 shadow-md hover:shadow-xl transform transition-all duration-200 active:scale-95 cursor-pointer"
+            >
+              <MessageSquare className="w-5 h-5" />
+              <span>LET&apos;S TALK</span>
+            </button>
           </div>
         </div>
       </section>
