@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { Logo } from './Logo';
 import { Menu, X, ArrowRight, MessageSquare } from 'lucide-react';
 
 interface NavbarProps {
@@ -143,15 +142,6 @@ export function Navbar({ onOpenContact, onOpenPlaceholder }: NavbarProps) {
     }
   };
 
-  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    if (pathname === '/about' || pathname === '/services' || pathname === '/industries' || pathname === '/advantages' || pathname === '/career') {
-      router.push('/');
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
-
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white ${
@@ -162,15 +152,7 @@ export function Navbar({ onOpenContact, onOpenPlaceholder }: NavbarProps) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* LEFT: Official Logo */}
-          <a
-            href="/"
-            onClick={handleLogoClick}
-            className="flex items-center focus:outline-none focus:ring-2 focus:ring-emerald-500 rounded-lg p-1"
-            aria-label="Enlace Global Homepage"
-          >
-            <Logo height={42} />
-          </a>
+          <div />
 
           {/* RIGHT: Desktop Navigation Links */}
           <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">

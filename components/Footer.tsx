@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { Logo } from './Logo';
 import { Mail, Linkedin, PhoneCall, ArrowUpRight, MessageSquare } from 'lucide-react';
 
 interface FooterProps {
@@ -89,25 +88,8 @@ export function Footer({ onOpenContact, onOpenPlaceholder }: FooterProps) {
         {/* Main Footer Top Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-emerald-800/80">
           
-          {/* Column 1 & 2: Brand Info & Logo */}
+          {/* Column 1 & 2: Brand Info */}
           <div className="lg:col-span-2 space-y-5">
-            {/* Logo Lockup */}
-            <a
-              href="/"
-              onClick={(e) => {
-                e.preventDefault();
-                if (pathname === '/about' || pathname === '/services' || pathname === '/industries' || pathname === '/career') {
-                  router.push('/');
-                } else {
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-              }}
-              className="inline-block focus:outline-none focus:ring-2 focus:ring-emerald-400 rounded-lg"
-              aria-label="Enlace Global Homepage"
-            >
-              <Logo height={36} isDarkBg={true} />
-            </a>
-
             <p className="text-sm text-emerald-100/90 max-w-sm leading-relaxed font-normal">
               An AI-enabled BPO and business process services partner combining human expertise with intelligent technology to elevate customer experience, drive revenue growth, and streamline operations.
             </p>
