@@ -8,7 +8,7 @@ import { PlaceholderModal } from '@/components/PlaceholderModal';
 import { IndustryDetailModal, DetailedIndustry } from '@/components/IndustryDetailModal';
 
 // Images generated for Industries page
-import heroBg from '@/src/assets/images/about_hero_bg_1786610981214.jpg';
+import heroBg from '@/src/assets/images/industries_hero_bg_1786731911426.jpg';
 import realEstateImg from '@/src/assets/images/ind_real_estate_1786612273727.jpg';
 import healthcareImg from '@/src/assets/images/ind_healthcare_1786612289224.jpg';
 import educationImg from '@/src/assets/images/ind_education_1786612305451.jpg';
@@ -243,7 +243,7 @@ export default function IndustriesPage() {
 
           {/* Main Heading */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.12]">
-            INDUSTRIES WE SERVE
+            <span className="text-[#0D8A4E]">INDUSTRIES</span> WE SERVE
           </h1>
 
           {/* Supporting Copy */}

@@ -37,7 +37,7 @@ import {
   Languages
 } from 'lucide-react';
 
-import servicesHeroBg from '@/src/assets/images/about_hero_bg_1786610981214.jpg';
+import servicesHeroBg from '@/src/assets/images/bpo_services_hero_1786731450714.jpg';
 import documentProcessingImg from '@/src/assets/images/document_processing_service_1786648730469.jpg';
 
 export default function ServicesPage() {
