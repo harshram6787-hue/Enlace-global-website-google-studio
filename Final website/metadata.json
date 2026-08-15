@@ -1,0 +1,6 @@
+{
+  "name": "Enlace Global",
+  "description": "AI-Enabled BPO & Business Process Services Homepage",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

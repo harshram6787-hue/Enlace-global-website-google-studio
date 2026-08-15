@@ -151,7 +151,9 @@ export function Navbar({ onOpenContact, onOpenPlaceholder }: NavbarProps) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          <Logo height={58} />
+          <a href="/" aria-label="Enlace Global Home">
+            <Logo height={65} />
+          </a>
 
           {/* RIGHT: Desktop Navigation Links */}
           <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
