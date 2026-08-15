@@ -7,7 +7,6 @@ import { LetsTalkModal } from '@/components/LetsTalkModal';
 import { PlaceholderModal } from '@/components/PlaceholderModal';
 import aboutHeroImg from '@/src/assets/images/about_hero_bg_1786610981214.jpg';
 import {
-  Sparkles,
   ArrowRight,
   MessageSquare,
   Users,
@@ -17,10 +16,6 @@ import {
   HeartHandshake,
   Award,
   ShieldCheck,
-  CheckCircle2,
-  Zap,
-  TrendingUp,
-  Brain,
 } from 'lucide-react';
 
 export default function AboutPage() {
@@ -112,10 +107,6 @@ export default function AboutPage() {
               
               {/* Left Column: Text Content */}
               <div className="lg:col-span-7 space-y-4 sm:space-y-5">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-                  <span>Who We Are</span>
-                </div>
-
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
                   Built Around People. <br className="hidden sm:inline" />
                   <span className="text-[#0D8A4E]">Enhanced by Intelligence.</span>
@@ -184,10 +175,6 @@ export default function AboutPage() {
             <div className="bg-white p-6 sm:p-10 md:p-12 rounded-3xl border border-emerald-100 shadow-xl space-y-4 sm:space-y-5 text-center sm:text-left relative overflow-hidden">
               <div className="absolute top-0 left-0 w-3 h-full bg-[#0D8A4E]" />
 
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-                <span>Our Purpose</span>
-              </div>
-
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
                 Why We Exist
               </h2>
@@ -211,9 +198,6 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
             
             <div className="text-center max-w-3xl mx-auto space-y-3">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-                <span>Strategic Direction</span>
-              </div>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
                 Our Vision &amp; Mission
               </h2>
@@ -265,33 +249,28 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
             
             <div className="text-center max-w-3xl mx-auto space-y-3">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-                <span>Core Operating Principles</span>
-              </div>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
                 Our Values
               </h2>
             </div>
 
-            {/* Exactly 5 Value Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto items-stretch">
-              {valuesList.map((val, index) => {
+            {/* Exactly 5 Value Cards - Centered & Perfectly Aligned */}
+            <div className="flex flex-wrap justify-center gap-6 max-w-6xl mx-auto">
+              {valuesList.map((val) => {
                 const IconComponent = val.icon;
-                // Center bottom 2 cards cleanly on desktop if 5 total
-                const isLastTwoOnDesktop = index >= 3;
                 return (
                   <div
                     key={val.id}
-                    className={`bg-white p-5 sm:p-6 rounded-2xl border border-emerald-100 shadow-md hover:shadow-xl hover:border-emerald-300 transition-all duration-300 flex flex-col space-y-3 ${
-                      isLastTwoOnDesktop ? 'lg:col-span-1 lg:last:col-span-1' : ''
-                    }`}
+                    className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] bg-white p-6 sm:p-7 rounded-2xl border border-emerald-100/90 shadow-md hover:shadow-xl hover:border-emerald-300 transition-all duration-300 flex flex-col items-start space-y-4 group"
                   >
-                    <div className="w-11 h-11 rounded-xl bg-emerald-100 text-[#0D8A4E] flex items-center justify-center shrink-0">
-                      <IconComponent className="w-5 h-5" />
+                    <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 text-[#0D8A4E] group-hover:bg-[#0D8A4E] group-hover:text-white transition-colors duration-200 flex items-center justify-center shrink-0 shadow-xs">
+                      <IconComponent className="w-6 h-6 transition-transform duration-200 group-hover:scale-105" />
                     </div>
 
-                    <div className="space-y-1.5">
-                      <h3 className="text-xl font-bold text-slate-900">{val.title}</h3>
+                    <div className="space-y-2 flex-1 flex flex-col justify-start">
+                      <h3 className="text-xl font-extrabold text-slate-900 tracking-tight">
+                        {val.title}
+                      </h3>
                       <p className="text-sm text-slate-600 leading-relaxed font-normal">
                         {val.description}
                       </p>

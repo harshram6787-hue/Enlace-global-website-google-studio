@@ -35,25 +35,23 @@ export function Navbar({ onOpenContact, onOpenPlaceholder }: NavbarProps) {
         return;
       }
 
+      if (pathname === '/industries') {
+        setActiveSection('industries');
+        return;
+      }
+
+      if (pathname === '/advantages') {
+        setActiveSection('advantages');
+        return;
+      }
+
       if (pathname === '/career') {
         setActiveSection('career');
         return;
       }
 
-      // Scroll Spy Logic for homepage
-      const sections = ['hero', 'about', 'capabilities', 'services', 'advantages', 'contact'];
-      const scrollPosition = window.scrollY + 120;
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const sectionEl = document.getElementById(sections[i]);
-        if (sectionEl) {
-          const top = sectionEl.offsetTop;
-          if (scrollPosition >= top) {
-            setActiveSection(sections[i]);
-            break;
-          }
-        }
-      }
+      // Default on homepage
+      setActiveSection('home');
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });

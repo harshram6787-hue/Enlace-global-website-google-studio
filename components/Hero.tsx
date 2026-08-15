@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, Sparkles } from 'lucide-react';
-import homeHeroImg from '@/src/assets/images/home_hero_bpo_1786610963903.jpg';
+import homeHeroImg from '@/src/assets/images/home_hero_global_cx_1786780682139.jpg';
 
 interface HeroProps {
   onOpenContact: () => void;

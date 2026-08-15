@@ -4,14 +4,9 @@ import React from 'react';
 
 export function WelcomeNote() {
   return (
-    <section id="about" className="py-16 md:py-24 bg-white relative">
+    <section id="welcome" className="py-16 md:py-24 bg-white relative">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
         
-        {/* Subtle Section Label */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-xs font-bold uppercase tracking-wider shadow-2xs">
-          <span>Executive Introduction</span>
-        </div>
-
         {/* Section Heading */}
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
           Welcome to <span className="text-[#0D8A4E]">Enlace Global</span>

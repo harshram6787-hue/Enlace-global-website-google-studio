@@ -7,17 +7,14 @@ import { LetsTalkModal } from '@/components/LetsTalkModal';
 import { PlaceholderModal } from '@/components/PlaceholderModal';
 import { CareerModal } from '@/components/CareerModal';
 import {
-  Sparkles,
   ArrowRight,
   MessageSquare,
   Users,
   Cpu,
   Brain,
-  HeartHandshake,
   UserCheck,
   Compass,
   TrendingUp,
-  Zap,
   GraduationCap,
   Target,
   Briefcase,
@@ -133,7 +130,7 @@ export default function CareerPage() {
                 onClick={() => setCareerModalOpen(true)}
                 className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full text-base font-bold text-white bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 shadow-md hover:shadow-xl transform transition-all duration-200 active:scale-95 cursor-pointer"
               >
-                <Briefcase className="w-5 h-5 text-amber-300" />
+                <Briefcase className="w-5 h-5 text-white" />
                 <span>Explore Opportunities</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
@@ -147,10 +144,6 @@ export default function CareerPage() {
             
             {/* Section Header */}
             <div className="max-w-3xl mx-auto text-center space-y-4 mb-12 sm:mb-16">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs font-bold uppercase tracking-wider">
-                <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                <span>Our Ideal Candidates</span>
-              </div>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
                 We’re Looking for People Who Think <span className="text-[#0D8A4E]">Beyond the Ordinary</span>
               </h2>
@@ -287,7 +280,7 @@ export default function CareerPage() {
                   onClick={() => setCareerModalOpen(true)}
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-bold text-white bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 shadow-md hover:shadow-lg transition-all transform active:scale-95 cursor-pointer"
                 >
-                  <MessageSquare className="w-4 h-4 text-amber-300" />
+                  <MessageSquare className="w-4 h-4 text-white" />
                   <span>Contact Us</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>

@@ -7,7 +7,7 @@ import { LetsTalkModal } from '@/components/LetsTalkModal';
 import { PlaceholderModal } from '@/components/PlaceholderModal';
 
 // Hero Background Visual
-import advantagesHeroBg from '@/src/assets/images/about_hero_bg_1786610981214.jpg';
+import advantagesHeroBg from '@/src/assets/images/advantages_hero_bg_1786780294215.jpg';
 
 import {
   Sparkles,
