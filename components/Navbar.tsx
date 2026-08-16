@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { Menu, X, ArrowRight, MessageSquare } from 'lucide-react';
 import { Logo } from './Logo';
@@ -151,7 +152,20 @@ export function Navbar({ onOpenContact, onOpenPlaceholder }: NavbarProps) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          <Logo height={58} />
+          <Link
+            href="/"
+            aria-label="Enlace Global Home"
+            onClick={(e) => {
+              if (pathname === '/') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+              setMobileMenuOpen(false);
+            }}
+            className="inline-flex items-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-500 rounded-lg group"
+          >
+            <Logo height={80} />
+          </Link>
 
           {/* RIGHT: Desktop Navigation Links */}
           <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">

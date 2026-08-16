@@ -1,8 +1,10 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { Mail, Linkedin, PhoneCall, ArrowUpRight, MessageSquare } from 'lucide-react';
+import { Logo } from './Logo';
 
 interface FooterProps {
   onOpenContact: () => void;
@@ -90,6 +92,22 @@ export function Footer({ onOpenContact, onOpenPlaceholder }: FooterProps) {
           
           {/* Column 1 & 2: Brand Info */}
           <div className="lg:col-span-2 space-y-5">
+            <div>
+              <Link
+                href="/"
+                aria-label="Enlace Global Home"
+                onClick={(e) => {
+                  if (pathname === '/') {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
+                }}
+                className="inline-block cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-400 rounded-xl"
+              >
+                <Logo height={52} isDarkBg />
+              </Link>
+            </div>
+
             <p className="text-sm text-emerald-100/90 max-w-sm leading-relaxed font-normal">
               An AI-enabled BPO and business process services partner combining human expertise with intelligent technology to elevate customer experience, drive revenue growth, and streamline operations.
             </p>
@@ -188,26 +206,26 @@ export function Footer({ onOpenContact, onOpenPlaceholder }: FooterProps) {
             <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-300">Connect</h4>
             <ul className="space-y-3 text-sm text-emerald-100/90 font-medium">
               <li>
-                <button
-                  onClick={onOpenContact}
-                  className="flex items-center gap-2 hover:text-white transition-colors cursor-pointer"
-                >
-                  <PhoneCall className="w-4 h-4 text-emerald-400" />
-                  <span>Let&apos;s Talk</span>
-                </button>
-              </li>
-              <li>
                 <a
-                  href="mailto:contact@enlaceglobal.com"
+                  href="tel:+918697593683"
                   className="flex items-center gap-2 hover:text-white transition-colors"
                 >
-                  <Mail className="w-4 h-4 text-emerald-400" />
-                  <span>contact@enlaceglobal.com</span>
+                  <PhoneCall className="w-4 h-4 text-emerald-400" />
+                  <span>+91 8697593683</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="https://linkedin.com"
+                  href="mailto:info@enlaceglobalservices.com"
+                  className="flex items-center gap-2 hover:text-white transition-colors"
+                >
+                  <Mail className="w-4 h-4 text-emerald-400" />
+                  <span>info@enlaceglobalservices.com</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/company/enlace-global-services"
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-2 hover:text-white transition-colors"

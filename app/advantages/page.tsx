@@ -5,9 +5,16 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { LetsTalkModal } from '@/components/LetsTalkModal';
 import { PlaceholderModal } from '@/components/PlaceholderModal';
+import { AdvantageDetailModal, DetailedAdvantage } from '@/components/AdvantageDetailModal';
 
 // Hero Background Visual
 import advantagesHeroBg from '@/src/assets/images/advantages_hero_bg_1786780294215.jpg';
+import humanAiAdvantageImg from '@/src/assets/images/human_ai_advantage_1786870835780.jpg';
+import indFocusedAdvImg from '@/src/assets/images/ind_focused_adv_1786871827210.jpg';
+import costEffectiveAdvantageImg from '@/src/assets/images/cost_effective_advantage_1786871320562.jpg';
+import scalableOpsAdvImg from '@/src/assets/images/scalable_ops_adv_1786871850620.jpg';
+import customerCentricAdvantageImg from '@/src/assets/images/customer_centric_advantage_1786871335797.jpg';
+import perfContAdvImg from '@/src/assets/images/perf_cont_adv_1786871866895.jpg';
 
 import {
   Sparkles,
@@ -29,6 +36,7 @@ import {
 
 export default function AdvantagesPage() {
   const [contactOpen, setContactOpen] = useState(false);
+  const [selectedAdvantage, setSelectedAdvantage] = useState<DetailedAdvantage | null>(null);
   const [placeholderData, setPlaceholderData] = useState<{
     title: string;
     description: string;
@@ -38,49 +46,133 @@ export default function AdvantagesPage() {
     setPlaceholderData({ title, description });
   };
 
-  // 6 Advantage Cards
-  const advantages = [
+  // 6 Detailed Advantages Data
+  const detailedAdvantages: DetailedAdvantage[] = [
     {
       num: '01',
       title: 'HUMAN + AI APPROACH',
-      description:
+      shortDescription:
         'Technology empowers our people while preserving the human connection that great customer experiences require.',
       icon: Bot,
+      explanation: [
+        'Enlace Global combines skilled human teams with intelligent AI and automation to create a more efficient and responsive service model. AI supports our teams by helping with repetitive tasks, knowledge access, workflow automation, quality monitoring, and real-time insights — while people remain at the center of customer interactions.',
+        'This approach allows us to improve speed and consistency without losing the empathy, judgment, and relationship-building that customers value.',
+      ],
+      keyBenefits: [
+        'Human expertise supported by AI',
+        'Faster and more consistent processes',
+        'Intelligent workflow automation',
+        'Better customer experiences',
+      ],
+      technologyFocus:
+        'Real-time agent assistance, automated ticket summarization, semantic knowledge search, and dynamic QA monitoring.',
+      image: humanAiAdvantageImg,
+      imageAlt: 'Modern customer support specialist collaborating with intelligent AI tools and analytics',
     },
     {
       num: '02',
       title: 'INDUSTRY-FOCUSED SOLUTIONS',
-      description:
+      shortDescription:
         'We adapt our approach to the unique customer journeys, processes, and requirements of each industry.',
       icon: Briefcase,
+      explanation: [
+        'Every industry operates differently. Customer expectations, workflows, compliance requirements, and business priorities vary across sectors.',
+        'Enlace Global develops industry-focused processes instead of applying a one-size-fits-all BPO model. Our teams are trained around the specific requirements of each client’s industry, while technology and automation help us improve efficiency and consistency.',
+      ],
+      keyBenefits: [
+        'Industry-specific workflows',
+        'Specialized team training',
+        'Customized customer journeys',
+        'Flexible processes aligned with business needs',
+      ],
+      technologyFocus:
+        'Domain-adapted communication rules, regulatory-compliant workflows, and sector-tailored operational KPIs.',
+      image: indFocusedAdvImg,
+      imageAlt: 'Specialized enterprise teams executing industry-specific digital workflows across diverse business sectors',
     },
     {
       num: '03',
       title: 'COST-EFFECTIVE SOLUTIONS',
-      description:
+      shortDescription:
         'Combine skilled teams, technology, AI, and automation to improve operational efficiency and deliver greater value.',
       icon: TrendingUp,
+      explanation: [
+        'Our goal is not simply to reduce operating costs. We focus on creating greater value from every operational investment.',
+        'By combining skilled talent with AI, automation, optimized workflows, and performance monitoring, Enlace Global helps businesses improve productivity while maintaining service quality.',
+      ],
+      keyBenefits: [
+        'Optimized operational costs',
+        'Higher team productivity',
+        'Automation of repetitive processes',
+        'Better value without compromising quality',
+      ],
+      technologyFocus:
+        'Automated routine task handling, streamlined case queues, and operational waste reduction.',
+      image: costEffectiveAdvantageImg,
+      imageAlt: 'Business leaders reviewing operational ROI, cost-effective metrics, and smart workflow automation',
     },
     {
       num: '04',
-      title: 'SCALABLE & FLEXIBLE',
-      description:
-        'Build operations that can adapt as your volumes, business needs, and growth change.',
+      title: 'SCALABLE OPERATIONS',
+      shortDescription:
+        'Flexible teams and technology-enabled processes that grow with your business.',
       icon: Maximize2,
+      explanation: [
+        'Business requirements change over time. Enlace Global is designed to support clients as they grow, launch new initiatives, enter new markets, or experience changing customer demand.',
+        'Our flexible workforce model, standardized processes, and technology-enabled operations allow services to scale up or down while maintaining operational consistency.',
+      ],
+      keyBenefits: [
+        'Flexible workforce scaling',
+        'Rapid operational expansion',
+        'Standardized processes',
+        'Consistent service quality',
+      ],
+      technologyFocus:
+        'Cloud-orchestrated staffing capacity, modular training playbooks, and elastic queue routing.',
+      image: scalableOpsAdvImg,
+      imageAlt: 'Expanding high-tech corporate operations floor with global scalability and agile team capacity',
     },
     {
       num: '05',
-      title: 'CUSTOMER EXPERIENCE FOCUS',
-      description:
-        'Every interaction is designed around delivering responsive, consistent, and meaningful customer experiences.',
+      title: 'CUSTOMER-CENTRIC APPROACH',
+      shortDescription:
+        'We build every process around the people your business serves.',
       icon: Heart,
+      explanation: [
+        'Customer experience is more than answering calls or responding to messages. It is about understanding customer needs and creating interactions that build trust and loyalty.',
+        'Enlace Global combines trained professionals, customer-focused processes, quality monitoring, and intelligent insights to help businesses create more meaningful customer experiences across every interaction channel.',
+      ],
+      keyBenefits: [
+        'Customer-first processes',
+        'Consistent service across channels',
+        'Quality-focused operations',
+        'Stronger customer relationships',
+      ],
+      technologyFocus:
+        'Omnichannel context synchronization, sentiment analytics, and satisfaction feedback loops.',
+      image: customerCentricAdvantageImg,
+      imageAlt: 'Attentive and empathetic customer service specialist communicating through digital omnichannel support',
     },
     {
       num: '06',
-      title: 'PERFORMANCE-DRIVEN',
-      description:
-        'Use data, insights, and continuous improvement to enhance quality, efficiency, and business outcomes.',
+      title: 'PERFORMANCE & CONTINUOUS IMPROVEMENT',
+      shortDescription:
+        'Measure performance, identify opportunities, and continuously improve every process.',
       icon: BarChart3,
+      explanation: [
+        'We believe operational excellence is an ongoing process. Enlace Global uses performance metrics, quality monitoring, analytics, and intelligent insights to identify what is working and where improvements can be made.',
+        'Regular performance reviews help teams continuously optimize workflows, improve service quality, and deliver stronger business outcomes.',
+      ],
+      keyBenefits: [
+        'Data-driven performance monitoring',
+        'Quality assurance',
+        'Continuous process optimization',
+        'Actionable operational insights',
+      ],
+      technologyFocus:
+        'Real-time SLA reporting, automated trend analysis, and recurring process refinement sprints.',
+      image: perfContAdvImg,
+      imageAlt: 'Operational leadership team reviewing live performance dashboards, KPI analytics, and continuous process optimization',
     },
   ];
 
@@ -182,17 +274,18 @@ export default function AdvantagesPage() {
 
           {/* Six Advantage Cards Grid (Desktop: 3 cols x 2 rows / Tablet: 2 cols / Mobile: 1 col) */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {advantages.map((item) => {
+            {detailedAdvantages.map((item) => {
               const IconComp = item.icon;
               return (
                 <div
                   key={item.num}
-                  className="p-7 sm:p-8 rounded-2xl bg-white border border-slate-200/80 hover:border-emerald-500/80 shadow-sm hover:shadow-md transition-all duration-300 group hover:-translate-y-1 flex flex-col justify-between"
+                  onClick={() => setSelectedAdvantage(item)}
+                  className="p-7 sm:p-8 rounded-2xl bg-white border border-slate-200/80 hover:border-emerald-500/80 shadow-xs hover:shadow-lg transition-all duration-300 group hover:-translate-y-1 flex flex-col justify-between cursor-pointer relative"
                 >
                   <div className="space-y-4">
                     {/* Header Row: Icon & Step Number */}
                     <div className="flex items-center justify-between">
-                      <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-[#0D8A4E] group-hover:bg-[#0D8A4E] group-hover:text-white transition-colors duration-300 shadow-sm">
+                      <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-[#0D8A4E] group-hover:bg-[#0D8A4E] group-hover:text-white transition-colors duration-300 shadow-xs">
                         <IconComp className="w-6 h-6" />
                       </div>
                       <span className="text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-100">
@@ -207,8 +300,16 @@ export default function AdvantagesPage() {
 
                     {/* Short Explanation */}
                     <p className="text-sm text-slate-600 leading-relaxed font-normal">
-                      {item.description}
+                      {item.shortDescription}
                     </p>
+                  </div>
+
+                  {/* Explore More link trigger at the bottom */}
+                  <div className="pt-5 mt-4 border-t border-slate-100 flex items-center justify-between">
+                    <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#0D8A4E] group-hover:text-emerald-700 transition-colors">
+                      <span>Explore More</span>
+                      <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                    </span>
                   </div>
                 </div>
               );
@@ -380,6 +481,15 @@ export default function AdvantagesPage() {
       />
 
       {/* Modals */}
+      <AdvantageDetailModal
+        advantage={selectedAdvantage}
+        onClose={() => setSelectedAdvantage(null)}
+        onOpenContact={() => {
+          setSelectedAdvantage(null);
+          setContactOpen(true);
+        }}
+      />
+
       <LetsTalkModal
         isOpen={contactOpen}
         onClose={() => setContactOpen(false)}
