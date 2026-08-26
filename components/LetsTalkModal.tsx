@@ -21,10 +21,28 @@ export function LetsTalkModal({ isOpen, onClose }: LetsTalkModalProps) {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch("https://formspree.io/f/mgaewezl", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      setSubmitted(true);
+    } else {
+      alert("Unable to submit the form. Please try again.");
+    }
+  } catch {
+    alert("Unable to submit the form. Please check your connection.");
+  }
+};
 
   const resetAndClose = () => {
     setSubmitted(false);
