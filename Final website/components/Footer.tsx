@@ -86,10 +86,10 @@ export function Footer({ onOpenContact, onOpenPlaceholder }: FooterProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Footer Top Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-emerald-800/80">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[minmax(0,2fr)_minmax(0,0.8fr)_minmax(0,1fr)_minmax(16rem,1.2fr)] gap-10 pb-12 border-b border-emerald-800/80">
           
-          {/* Column 1 & 2: Brand Info */}
-          <div className="lg:col-span-2 space-y-5">
+          {/* Brand Info */}
+          <div className="min-w-0 space-y-5">
             <p className="text-sm text-emerald-100/90 max-w-sm leading-relaxed font-normal">
               An AI-enabled BPO and business process services partner combining human expertise with intelligent technology to elevate customer experience, drive revenue growth, and streamline operations.
             </p>
@@ -192,7 +192,7 @@ export function Footer({ onOpenContact, onOpenPlaceholder }: FooterProps) {
                   onClick={onOpenContact}
                   className="flex items-center gap-2 hover:text-white transition-colors cursor-pointer"
                 >
-                  <PhoneCall className="w-4 h-4 text-emerald-400" />
+                  <PhoneCall className="w-4 h-4 shrink-0 text-emerald-400" />
                   <span>Let&apos;s Talk</span>
                 </button>
               </li>
@@ -201,8 +201,8 @@ export function Footer({ onOpenContact, onOpenPlaceholder }: FooterProps) {
                   href="mailto:contact@enlaceglobal.com"
                   className="flex items-center gap-2 hover:text-white transition-colors"
                 >
-                  <Mail className="w-4 h-4 text-emerald-400" />
-                  <span>contact@enlaceglobal.com</span>
+                  <Mail className="w-4 h-4 shrink-0 text-emerald-400" />
+                  <span className="min-w-0 break-words lg:whitespace-nowrap">contact@enlaceglobal.com</span>
                 </a>
               </li>
               <li>
@@ -212,7 +212,7 @@ export function Footer({ onOpenContact, onOpenPlaceholder }: FooterProps) {
                   rel="noreferrer"
                   className="flex items-center gap-2 hover:text-white transition-colors"
                 >
-                  <Linkedin className="w-4 h-4 text-emerald-400" />
+                  <Linkedin className="w-4 h-4 shrink-0 text-emerald-400" />
                   <span>LinkedIn</span>
                   <ArrowUpRight className="w-3 h-3 text-emerald-300" />
                 </a>

@@ -11,7 +11,7 @@ interface FooterProps {
   onOpenPlaceholder: (title: string, description: string) => void;
 }
 
-export function Footer({ onOpenContact, onOpenPlaceholder }: FooterProps) {
+export function Footer({ onOpenContact }: FooterProps) {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -88,10 +88,10 @@ export function Footer({ onOpenContact, onOpenPlaceholder }: FooterProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Footer Top Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-emerald-800/80">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[minmax(0,2fr)_minmax(0,0.8fr)_minmax(0,1fr)_minmax(16rem,1.2fr)] gap-10 pb-12 border-b border-emerald-800/80">
           
-          {/* Column 1 & 2: Brand Info */}
-          <div className="lg:col-span-2 space-y-5">
+          {/* Brand Info */}
+          <div className="min-w-0 space-y-5">
             <div>
               <Link
                 href="/"
@@ -210,7 +210,7 @@ export function Footer({ onOpenContact, onOpenPlaceholder }: FooterProps) {
                   href="tel:+918697593683"
                   className="flex items-center gap-2 hover:text-white transition-colors"
                 >
-                  <PhoneCall className="w-4 h-4 text-emerald-400" />
+                  <PhoneCall className="w-4 h-4 shrink-0 text-emerald-400" />
                   <span>+91 8697593683</span>
                 </a>
               </li>
@@ -219,8 +219,8 @@ export function Footer({ onOpenContact, onOpenPlaceholder }: FooterProps) {
                   href="mailto:info@enlaceglobalservices.com"
                   className="flex items-center gap-2 hover:text-white transition-colors"
                 >
-                  <Mail className="w-4 h-4 text-emerald-400" />
-                  <span>info@enlaceglobalservices.com</span>
+                  <Mail className="w-4 h-4 shrink-0 text-emerald-400" />
+                  <span className="min-w-0 break-words lg:whitespace-nowrap">info@enlaceglobalservices.com</span>
                 </a>
               </li>
               <li>
@@ -230,7 +230,7 @@ export function Footer({ onOpenContact, onOpenPlaceholder }: FooterProps) {
                   rel="noreferrer"
                   className="flex items-center gap-2 hover:text-white transition-colors"
                 >
-                  <Linkedin className="w-4 h-4 text-emerald-400" />
+                  <Linkedin className="w-4 h-4 shrink-0 text-emerald-400" />
                   <span>LinkedIn</span>
                   <ArrowUpRight className="w-3 h-3 text-emerald-300" />
                 </a>
@@ -247,18 +247,18 @@ export function Footer({ onOpenContact, onOpenPlaceholder }: FooterProps) {
           </div>
 
           <div className="flex items-center space-x-6">
-            <button
-              onClick={() => onOpenPlaceholder('Privacy Policy', 'Enlace Global adheres to strict international GDPR, HIPAA, and SOC2 privacy protocols.')}
+            <Link
+              href="/privacy-policy"
               className="hover:text-white transition-colors"
             >
               Privacy Policy
-            </button>
-            <button
-              onClick={() => onOpenPlaceholder('Terms & Conditions', 'Enterprise SLA service agreements and operational delivery terms.')}
+            </Link>
+            <Link
+              href="/terms"
               className="hover:text-white transition-colors"
             >
               Terms & Conditions
-            </button>
+            </Link>
           </div>
         </div>
 

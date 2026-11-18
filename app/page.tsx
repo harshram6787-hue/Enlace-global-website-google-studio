@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
 import { WelcomeNote } from '@/components/WelcomeNote';
-import { OperationalArchitectureSection } from '@/components/OperationalArchitectureSection';
+import { PilotSection } from '@/components/PilotSection';
 import { Footer } from '@/components/Footer';
 import { LetsTalkModal } from '@/components/LetsTalkModal';
 import { PlaceholderModal } from '@/components/PlaceholderModal';
@@ -34,8 +34,8 @@ export default function HomePage() {
         {/* 3. Welcome Note */}
         <WelcomeNote />
 
-        {/* 4. Our Operational Architecture */}
-        <OperationalArchitectureSection />
+        {/* 4. 30-Day Low-Risk Pilot */}
+        <PilotSection onOpenContact={() => setContactOpen(true)} />
       </main>
 
       {/* Footer */}

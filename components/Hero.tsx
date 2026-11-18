@@ -9,7 +9,7 @@ interface HeroProps {
   onOpenContact: () => void;
 }
 
-export function Hero({ onOpenContact }: HeroProps) {
+export function Hero(_props: HeroProps) {
   return (
     <section id="hero" className="relative pt-24 pb-20 md:pt-32 md:pb-28 lg:pt-36 lg:pb-32 overflow-hidden min-h-[500px] md:min-h-[560px] flex items-center justify-center">
       {/* Background Image with Light Tint Overlay (Matches About Us Hero Style) */}
@@ -47,13 +47,13 @@ export function Hero({ onOpenContact }: HeroProps) {
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-          <button
-            onClick={onOpenContact}
+          <a
+            href="#pilot-section"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl text-base font-bold text-white bg-[#0D8A4E] hover:bg-[#096B3C] shadow-lg shadow-emerald-700/20 hover:shadow-xl hover:shadow-emerald-700/30 transform transition-all duration-200 active:scale-98 group cursor-pointer"
           >
-            <span>Let&apos;s Talk</span>
+            <span>Start a 30-Day Pilot</span>
             <ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" />
-          </button>
+          </a>
 
           <Link
             href="/services"

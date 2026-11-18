@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { LetsTalkModal } from '@/components/LetsTalkModal';
@@ -842,6 +843,15 @@ export default function ServicesPage() {
           </div>
         </section>
 
+        {/* 30-Day Pilot Strip */}
+        <aside aria-label="30-day pilot program" className="border-t border-emerald-200 bg-emerald-50/80 py-5">
+          <p className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm sm:text-base text-slate-700 leading-relaxed">
+            Want to test our CX, Sales, or Back-Office team before committing?{' '}
+            <Link href="/#pilot-section" className="font-bold text-[#0D8A4E] hover:text-[#096B3C] underline underline-offset-4 decoration-emerald-300 transition-colors">
+              Explore our 30-Day Low-Risk Pilot →
+            </Link>
+          </p>
+        </aside>
       </main>
 
       {/* 7. Existing Footer */}
