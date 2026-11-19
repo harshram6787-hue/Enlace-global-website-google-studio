@@ -4,13 +4,15 @@ import React, { useState } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
 import { WelcomeNote } from '@/components/WelcomeNote';
+import { FounderSpotlight } from '@/components/FounderSpotlight';
 import { PilotSection } from '@/components/PilotSection';
 import { Footer } from '@/components/Footer';
-import { LetsTalkModal } from '@/components/LetsTalkModal';
+import { LetsTalkModal, PILOT_SERVICE_INTEREST } from '@/components/LetsTalkModal';
 import { PlaceholderModal } from '@/components/PlaceholderModal';
 
 export default function HomePage() {
   const [contactOpen, setContactOpen] = useState(false);
+  const [isPilotInquiry, setIsPilotInquiry] = useState(false);
   const [placeholderData, setPlaceholderData] = useState<{ title: string; description: string } | null>(null);
 
   const handleOpenPlaceholder = (title: string, description: string) => {
@@ -34,8 +36,13 @@ export default function HomePage() {
         {/* 3. Welcome Note */}
         <WelcomeNote />
 
+        <FounderSpotlight />
+
         {/* 4. 30-Day Low-Risk Pilot */}
-        <PilotSection onOpenContact={() => setContactOpen(true)} />
+        <PilotSection onOpenContact={() => {
+          setIsPilotInquiry(true);
+          setContactOpen(true);
+        }} />
       </main>
 
       {/* Footer */}
@@ -47,7 +54,11 @@ export default function HomePage() {
       {/* Modals & Interactivity */}
       <LetsTalkModal
         isOpen={contactOpen}
-        onClose={() => setContactOpen(false)}
+        initialServiceInterest={isPilotInquiry ? PILOT_SERVICE_INTEREST : undefined}
+        onClose={() => {
+          setContactOpen(false);
+          setIsPilotInquiry(false);
+        }}
       />
 
       <PlaceholderModal

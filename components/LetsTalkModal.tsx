@@ -1,23 +1,37 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { X, Send, CheckCircle2, Building2, User, Mail, Phone, MessageSquare } from 'lucide-react';
+
+export const PILOT_SERVICE_INTEREST = '30-Day Low-Risk Pilot (2 Dedicated Agents)';
 
 interface LetsTalkModalProps {
   isOpen: boolean;
   onClose: () => void;
+  initialServiceInterest?: string;
 }
 
-export function LetsTalkModal({ isOpen, onClose }: LetsTalkModalProps) {
+export function LetsTalkModal({ isOpen, onClose, initialServiceInterest = 'Customer Experience' }: LetsTalkModalProps) {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     company: '',
     email: '',
     phone: '',
-    serviceInterest: 'Customer Experience',
+    serviceInterest: initialServiceInterest,
     message: '',
+    pilotRequested: false,
   });
+
+  useEffect(() => {
+    if (isOpen) {
+      setFormData((current) => ({
+        ...current,
+        serviceInterest: initialServiceInterest,
+        pilotRequested: false,
+      }));
+    }
+  }, [isOpen, initialServiceInterest]);
 
   if (!isOpen) return null;
 
@@ -31,7 +45,10 @@ export function LetsTalkModal({ isOpen, onClose }: LetsTalkModalProps) {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify({
+        ...formData,
+        pilotRequested: formData.pilotRequested ? 'Yes' : 'No',
+      }),
     });
 
     if (response.ok) {
@@ -51,7 +68,7 @@ export function LetsTalkModal({ isOpen, onClose }: LetsTalkModalProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-emerald-100 relative overflow-hidden">
+      <div className="bg-white rounded-2xl max-w-lg w-full max-h-[calc(100dvh-2rem)] sm:max-h-[calc(100dvh-3rem)] p-6 sm:p-8 shadow-2xl border border-emerald-100 relative overflow-y-auto">
         
         {/* Close button */}
         <button
@@ -83,10 +100,7 @@ export function LetsTalkModal({ isOpen, onClose }: LetsTalkModalProps) {
         ) : (
           <div className="space-y-6">
             <div>
-              <span className="text-xs font-bold text-[#0D8A4E] uppercase tracking-wider bg-emerald-50 px-2.5 py-1 rounded-full">
-                Executive Consultation
-              </span>
-              <h3 className="text-2xl font-extrabold text-slate-900 mt-2">Let&apos;s Talk Business</h3>
+              <h3 className="text-2xl font-extrabold text-slate-900">Let&apos;s Talk Business</h3>
               <p className="text-xs sm:text-sm text-slate-600 mt-1">
                 Discover how Enlace Global can transform your operations with intelligent technology and skilled human talent.
               </p>
@@ -157,8 +171,10 @@ export function LetsTalkModal({ isOpen, onClose }: LetsTalkModalProps) {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">Primary Area of Interest</label>
+                <label htmlFor="serviceInterest" className="block text-xs font-semibold text-slate-700 mb-1">Primary Area of Interest</label>
                 <select
+                  id="serviceInterest"
+                  name="serviceInterest"
                   value={formData.serviceInterest}
                   onChange={(e) => setFormData({ ...formData, serviceInterest: e.target.value })}
                   className="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none bg-white"
@@ -167,6 +183,7 @@ export function LetsTalkModal({ isOpen, onClose }: LetsTalkModalProps) {
                   <option value="Revenue Growth">Revenue Growth & Tele-Sales</option>
                   <option value="Back Office Operations">Back Office & Workflow Automation</option>
                   <option value="Hybrid Custom Model">Full Custom BPO Solution</option>
+                  <option value={PILOT_SERVICE_INTEREST}>{PILOT_SERVICE_INTEREST}</option>
                 </select>
               </div>
 
@@ -183,6 +200,17 @@ export function LetsTalkModal({ isOpen, onClose }: LetsTalkModalProps) {
                   />
                 </div>
               </div>
+
+              <label className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="pilotRequested"
+                  checked={formData.pilotRequested}
+                  onChange={(e) => setFormData({ ...formData, pilotRequested: e.target.checked })}
+                  className="mt-0.5 h-4 w-4 shrink-0 accent-[#0D8A4E] focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+                />
+                <span>I want to start with the 30-Day Low-Risk Pilot (2 AI-enabled specialists at introductory pricing)</span>
+              </label>
 
               <div className="pt-2">
                 <button

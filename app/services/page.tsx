@@ -41,6 +41,26 @@ import {
 import servicesHeroBg from '@/src/assets/images/bpo_services_hero_1786731450714.jpg';
 import documentProcessingImg from '@/src/assets/images/document_processing_service_1786648730469.jpg';
 
+const integrationPlatforms = ['Zendesk', 'Salesforce', 'HubSpot', 'Freshdesk', 'Intercom', 'Zoho CRM', 'Shopify'];
+
+const onboardingSteps = [
+  {
+    days: 'Days 1–3',
+    title: 'Workflow & KPI Mapping',
+    description: 'We audit your current tickets/scripts and define clear QA scorecards.',
+  },
+  {
+    days: 'Days 4–10',
+    title: 'Agent & AI Setup',
+    description: 'We train 2+ dedicated specialists on your brand voice, CRM, and AI assist tools.',
+  },
+  {
+    days: 'Days 11–14',
+    title: 'Calibration & Go-Live',
+    description: 'Live test calls/chats with daily founder-led QA reviews before full launch.',
+  },
+];
+
 export default function ServicesPage() {
   const [contactOpen, setContactOpen] = useState(false);
   const [placeholderData, setPlaceholderData] = useState<{ title: string; description: string } | null>(null);
@@ -192,7 +212,7 @@ export default function ServicesPage() {
                     </div>
 
                     <p className="text-slate-600 text-base leading-relaxed">
-                      Skilled agents deliver personalized customer assistance through professional voice interactions, supported by AI-powered real-time assistance, call insights, automated summaries and quality monitoring.
+                      24/7 inbound and outbound voice coverage delivered by clear, empathetic specialists—backed by real-time AI call insights and 100% QA compliance auditing to boost first-call resolution.
                     </p>
                   </div>
                 </div>
@@ -225,7 +245,7 @@ export default function ServicesPage() {
                     </div>
 
                     <p className="text-slate-600 text-base leading-relaxed">
-                      Real-time customer assistance through digital chat, enhanced by AI-assisted knowledge retrieval, response suggestions and conversation analysis for faster and more consistent support.
+                      Cut first-response times to under 60 seconds across web and social channels. Our agents use AI-assisted knowledge retrieval to resolve tier-1 inquiries instantly while escalating complex issues seamlessly.
                     </p>
                   </div>
                 </div>
@@ -258,7 +278,7 @@ export default function ServicesPage() {
                     </div>
 
                     <p className="text-slate-600 text-base leading-relaxed">
-                      Responsive handling of customer queries and service requests, supported by automation for email classification and routing and AI for intent detection, response assistance and prioritization.
+                      Eliminate inbox backlogs with smart ticket classification, automated tagging, and personalized human responses that keep your CSAT scores consistently high.
                     </p>
                   </div>
                 </div>
@@ -291,7 +311,7 @@ export default function ServicesPage() {
                     </div>
 
                     <p className="text-slate-600 text-base leading-relaxed">
-                      Convenient customer engagement through WhatsApp, using automated workflows and AI-assisted responses for routine enquiries, faster support and intelligent escalation to human agents when needed.
+                      Meet customers on WhatsApp with timely answers, clear order updates, and smooth handoffs when a specialist is needed.
                     </p>
                   </div>
                 </div>
@@ -326,7 +346,7 @@ export default function ServicesPage() {
               </h2>
 
               <p className="text-lg text-slate-600 font-normal leading-relaxed">
-                Help businesses identify opportunities, qualify prospects and support revenue-generating activities through skilled teams enhanced by intelligent technology and automation.
+                Turn warm leads into booked meetings through structured outbound follow-ups, lead qualification, and CRM pipeline management.
               </p>
             </div>
 
@@ -360,7 +380,7 @@ export default function ServicesPage() {
                     </div>
 
                     <p className="text-slate-600 text-base leading-relaxed">
-                      AI can help identify, segment and prioritize potential prospects, while automation streamlines outreach and follow-up activities to improve efficiency and consistency.
+                      Build a more relevant prospect list and keep outreach consistent so your sales team spends time on the right opportunities.
                     </p>
                   </div>
                 </div>
@@ -393,7 +413,7 @@ export default function ServicesPage() {
                     </div>
 
                     <p className="text-slate-600 text-base leading-relaxed">
-                      AI-assisted qualification can evaluate lead information, engagement and intent, helping teams identify higher-potential opportunities and prioritize follow-up.
+                      Prioritize sales-ready prospects by confirming fit, needs, and intent before handing them to your sales team.
                     </p>
                   </div>
                 </div>
@@ -426,7 +446,7 @@ export default function ServicesPage() {
                     </div>
 
                     <p className="text-slate-600 text-base leading-relaxed">
-                      Sales teams are supported with customer and conversation insights, while automation helps manage follow-ups, task creation and routine sales workflows.
+                      Keep deals moving with timely follow-ups, accurate CRM records, and clear handoffs that let your sales team focus on closing.
                     </p>
                   </div>
                 </div>
@@ -459,7 +479,7 @@ export default function ServicesPage() {
                     </div>
 
                     <p className="text-slate-600 text-base leading-relaxed">
-                      Automation can manage scheduling, reminders and follow-ups, while AI can help prioritize prospects and improve the efficiency of appointment-setting workflows.
+                      Fill your team&apos;s calendar with qualified meetings, coordinated scheduling, and timely reminders that reduce missed appointments.
                     </p>
                   </div>
                 </div>
@@ -494,7 +514,7 @@ export default function ServicesPage() {
               </h2>
 
               <p className="text-lg text-slate-600 font-normal leading-relaxed">
-                Enable businesses to streamline process-driven operations through accurate execution, intelligent workflows and technology-supported operational assistance.
+                Offload repetitive data entry, billing reconciliation, order processing, and CRM hygiene with high accuracy and zero operational bottlenecks.
               </p>
             </div>
 
@@ -531,7 +551,7 @@ export default function ServicesPage() {
                       </div>
 
                       <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                        Automation reduces repetitive data-entry work, while AI can help extract, validate, classify and organize information with greater speed and consistency.
+                        Keep customer and operational records accurate, complete, and ready to use—without tying up your internal team in repetitive data entry.
                       </p>
                     </div>
                   </div>
@@ -564,7 +584,7 @@ export default function ServicesPage() {
                       </div>
 
                       <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                        Automated workflows handle routine processing steps, while AI can help validate information, identify exceptions and flag transactions requiring human review.
+                        Keep orders moving with accurate transaction checks, prompt updates, and clear exception handling that prevents avoidable processing delays.
                       </p>
                     </div>
                   </div>
@@ -597,7 +617,7 @@ export default function ServicesPage() {
                       </div>
 
                       <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                        AI assistants and workflow automation can streamline routine administrative tasks, document handling, scheduling and information management.
+                        Give your team more time for customers by handling routine scheduling, document updates, and day-to-day administrative work.
                       </p>
                     </div>
                   </div>
@@ -635,7 +655,7 @@ export default function ServicesPage() {
                       </div>
 
                       <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                        Automation connects repetitive process steps and reduces manual intervention, while AI can help identify bottlenecks and support operational decision-making.
+                        Remove handoff delays and recurring process bottlenecks so work moves smoothly between teams and systems.
                       </p>
                     </div>
                   </div>
@@ -668,7 +688,7 @@ export default function ServicesPage() {
                       </div>
 
                       <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                        AI-powered document processing can extract and classify information, while automation routes the information into the appropriate business workflow.
+                        Turn incoming documents into complete, accurate records with clear checks and routing that reduce rework and speed up decisions.
                       </p>
                     </div>
                   </div>
@@ -681,6 +701,24 @@ export default function ServicesPage() {
           </div>
         </section>
 
+
+        <section id="tools-platforms" aria-labelledby="tools-platforms-heading" className="py-10 md:py-12 bg-white border-t border-emerald-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 id="tools-platforms-heading" className="text-2xl sm:text-3xl font-extrabold text-[#044729] tracking-tight leading-tight">
+              Seamless Integration With Your Existing Stack
+            </h2>
+            <p className="mt-3 max-w-5xl mx-auto text-sm sm:text-base text-slate-600 leading-relaxed">
+              Our specialists plug directly into your current CRM and helpdesk tools—no expensive software migration required.
+            </p>
+            <ul className="mt-6 flex flex-wrap items-center justify-center gap-3">
+              {integrationPlatforms.map((platform) => (
+                <li key={platform} className="rounded-full border border-emerald-200 bg-white px-5 py-2.5 text-sm font-semibold text-[#044729] shadow-xs">
+                  {platform}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
 
         {/* ================= 4. BUILT FOR FLEXIBLE SERVICE DELIVERY ================= */}
         <section className="py-16 md:py-24 bg-[#F4FAF6] border-t border-emerald-100/80 relative">
@@ -840,6 +878,34 @@ export default function ServicesPage() {
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
+          </div>
+        </section>
+
+        <section id="services-onboarding" aria-labelledby="services-onboarding-heading" className="py-12 md:py-16 bg-white border-t border-emerald-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 id="services-onboarding-heading" className="text-2xl sm:text-3xl font-extrabold text-[#044729] tracking-tight leading-tight text-center">
+              Go Live in as Little as 14 Days
+            </h2>
+            <div className="relative mt-8">
+              <div aria-hidden="true" className="pointer-events-none absolute left-[16.666%] right-[16.666%] top-[22px] hidden h-px bg-emerald-200 md:block" />
+              <ol className="relative grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                {onboardingSteps.map((step, index) => (
+                  <li key={step.days} className="flex items-start gap-4 text-left md:block md:text-center">
+                    <div className="relative z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#0D8A4E] text-base font-bold text-white shadow-sm md:mx-auto">
+                      <span className="sr-only">Step </span>{index + 1}
+                    </div>
+                    <div className="min-w-0 md:mt-4">
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#0D8A4E]">{step.days}</p>
+                      <h3 className="mt-2 text-base sm:text-lg font-bold text-[#044729]">{step.title}</h3>
+                      <p className="mt-2 text-sm text-slate-600 leading-relaxed">{step.description}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+            <p className="mt-6 max-w-4xl mx-auto text-sm text-slate-500 italic leading-relaxed text-center">
+              *Standard 14-day launch applies to most single-workflow pilot teams. Complex multi-system integrations or custom compliance setups may require 2–3 weeks depending on CRM access and training scope.
+            </p>
           </div>
         </section>
 

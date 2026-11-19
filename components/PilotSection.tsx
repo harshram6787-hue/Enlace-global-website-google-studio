@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 interface PilotSectionProps {
@@ -72,6 +73,12 @@ export function PilotSection({ onOpenContact }: PilotSectionProps) {
                 <ArrowRight className="w-5 h-5 shrink-0 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
               </button>
             </div>
+            <p className="mt-3 text-center text-xs sm:text-sm text-slate-500 leading-relaxed">
+              NDA-protected &amp; GDPR/DPDP aligned.{' '}
+              <Link href="/advantages#data-security" className="font-medium text-[#0D8A4E]/80 hover:text-[#096B3C] hover:underline underline-offset-4 transition-colors">
+                Learn about our security →
+              </Link>
+            </p>
           </div>
         </div>
       </div>

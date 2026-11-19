@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
+import { FounderSpotlight } from '@/components/FounderSpotlight';
 import { LetsTalkModal } from '@/components/LetsTalkModal';
 import { PlaceholderModal } from '@/components/PlaceholderModal';
 import aboutHeroImg from '@/src/assets/images/about_hero_bg_1786610981214.jpg';
@@ -243,6 +244,8 @@ export default function AboutPage() {
           </div>
         </section>
 
+
+        <FounderSpotlight />
 
         {/* ================= 5. OUR VALUES ================= */}
         <section className="py-10 md:py-12 bg-gradient-to-b from-white via-emerald-50/20 to-white relative">

@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { ArrowLeft } from 'lucide-react';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import { LetsTalkModal } from './LetsTalkModal';
@@ -16,11 +18,24 @@ interface LegalPageProps {
 }
 
 export function LegalPage({ title, intro, sections }: LegalPageProps) {
+  const router = useRouter();
   const [contactOpen, setContactOpen] = useState(false);
   const [placeholderData, setPlaceholderData] = useState<{ title: string; description: string } | null>(null);
 
   const handleOpenPlaceholder = (placeholderTitle: string, description: string) => {
     setPlaceholderData({ title: placeholderTitle, description });
+  };
+
+  const handleGoBack = () => {
+    const navigation = (window as Window & { navigation?: { canGoBack: boolean } }).navigation;
+    // The Navigation API excludes blank tabs and history from other websites.
+    const canGoBack = navigation?.canGoBack ?? window.history.length > 1;
+
+    if (canGoBack) {
+      router.back();
+    } else {
+      router.replace('/');
+    }
   };
 
   return (
@@ -31,6 +46,17 @@ export function LegalPage({ title, intro, sections }: LegalPageProps) {
       />
 
       <main className="flex-grow pt-36 sm:pt-40 lg:pt-44 pb-12 md:pb-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
+          <button
+            type="button"
+            onClick={handleGoBack}
+            aria-label="Go back to previous page"
+            title="Go back to previous page"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-emerald-100 bg-white text-[#0D8A4E] hover:border-emerald-300 hover:bg-emerald-50 hover:text-[#044729] transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 cursor-pointer"
+          >
+            <ArrowLeft className="h-6 w-6" aria-hidden="true" />
+          </button>
+        </div>
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <header className="space-y-4 border-b border-emerald-100 pb-8 mb-8">
             <h1 className="text-4xl sm:text-5xl font-extrabold text-[#044729] tracking-tight leading-tight">
