@@ -112,10 +112,10 @@ export default function ServicesPage() {
         onOpenPlaceholder={handleOpenPlaceholder}
       />
 
-      <main className="flex-grow pt-16 md:pt-20">
+      <main className="flex-grow pt-[121px]">
         
         {/* ================= 1. SERVICES HERO ================= */}
-        <section className="relative py-16 md:py-24 overflow-hidden min-h-[400px] flex items-center justify-center">
+        <section className="relative min-h-[450px] md:min-h-[425px] py-10 md:py-12 overflow-hidden flex items-center justify-center">
           {/* Background Image with Light Tint Overlay (Matches About Us Hero Style) */}
           <div className="absolute inset-0 z-0">
             <img
@@ -131,12 +131,12 @@ export default function ServicesPage() {
 
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-4 sm:space-y-6">
             {/* Hero Main Heading */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.12]">
+            <h1 className="text-[2rem] sm:text-[2.5rem] md:text-5xl lg:text-[3.5rem] font-extrabold text-slate-900 tracking-tight leading-[1.12]">
               Services Built for <span className="text-[#0D8A4E]">Better Business</span>
             </h1>
 
             {/* Hero Supporting Copy */}
-            <p className="text-lg sm:text-xl md:text-2xl text-slate-800 max-w-3xl mx-auto font-medium sm:font-semibold leading-relaxed drop-shadow-sm">
+            <p className="text-base sm:text-lg md:text-xl text-slate-800 max-w-3xl mx-auto font-medium sm:font-semibold leading-relaxed drop-shadow-sm">
               Enlace Global combines experienced people, intelligent technology and process excellence to deliver customer experience, revenue growth and operational solutions designed around measurable business needs.
             </p>
 
