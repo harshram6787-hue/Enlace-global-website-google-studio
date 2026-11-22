@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import homeHeroImg from '@/src/assets/images/home_hero_global_cx_1786780682139.jpg';
 
@@ -11,7 +10,7 @@ interface HeroProps {
 
 export function Hero(_props: HeroProps) {
   return (
-    <section id="hero" className="relative pt-24 pb-20 md:pt-32 md:pb-28 lg:pt-36 lg:pb-32 overflow-hidden min-h-[500px] md:min-h-[560px] flex items-center justify-center">
+    <section id="hero" className="relative min-h-[560px] md:min-h-[600px] py-10 md:py-12 overflow-hidden flex items-center justify-center">
       {/* Background Image with Light Tint Overlay (Matches About Us Hero Style) */}
       <div className="absolute inset-0 z-0">
         <img
@@ -33,7 +32,7 @@ export function Hero(_props: HeroProps) {
         </div>
 
         {/* Main Hero Headline */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.12]">
+        <h1 className="text-[2rem] sm:text-[2.5rem] md:text-5xl lg:text-[3.5rem] font-extrabold text-slate-900 tracking-tight leading-[1.12]">
           Intelligent service.{' '}
           <span className="text-[#0D8A4E]">Human expertise.</span>{' '}
           <br className="hidden sm:inline" />
@@ -41,26 +40,20 @@ export function Hero(_props: HeroProps) {
         </h1>
 
         {/* Supporting Copy */}
-        <p className="text-lg sm:text-xl md:text-2xl text-slate-800 max-w-3xl mx-auto font-medium sm:font-semibold leading-relaxed drop-shadow-sm">
-          Enlace Global is an AI-enabled BPO and business process partner combining skilled global talent with intelligent automation to elevate customer experience, drive revenue growth, and optimize back-office operations.
+        <p className="text-base sm:text-lg md:text-xl text-slate-800 max-w-3xl mx-auto font-medium sm:font-semibold leading-relaxed drop-shadow-sm">
+          Enlace Global is an AI-enabled BPO and business process partner combining skilled agents with intelligent automation to elevate customer experience, drive revenue growth, and optimize back-office operations.
         </p>
 
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+        {/* Primary CTA */}
+        <div className="flex items-center justify-center pt-2">
           <a
             href="#pilot-section"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl text-base font-bold text-white bg-[#0D8A4E] hover:bg-[#096B3C] shadow-lg shadow-emerald-700/20 hover:shadow-xl hover:shadow-emerald-700/30 transform transition-all duration-200 active:scale-98 group cursor-pointer"
+            className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl text-base font-bold text-white bg-[#0D8A4E] hover:bg-[#096B3C] shadow-lg shadow-emerald-700/20 hover:shadow-xl hover:shadow-emerald-700/30 transform transition-all duration-200 active:scale-98 group cursor-pointer"
           >
             <span>Start a 30-Day Pilot</span>
             <ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" />
           </a>
 
-          <Link
-            href="/services"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-semibold text-[#0D8A4E] bg-white border-2 border-emerald-200 hover:border-emerald-400 hover:bg-emerald-50/50 transition-all duration-200 cursor-pointer shadow-sm"
-          >
-            <span>Explore Our Services</span>
-          </Link>
         </div>
       </div>
     </section>

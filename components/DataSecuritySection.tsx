@@ -5,21 +5,25 @@ const securityPillars = [
     title: 'Strict Legal & NDA Protection',
     description: 'Every team member, from leadership to front-line specialists, signs binding Non-Disclosure Agreements (NDAs) and confidentiality contracts before onboarding.',
     icon: FileCheck2,
+    backgroundClass: 'bg-[#EDF7F0]',
   },
   {
     title: 'Zero-Trust Access & Encryption',
     description: 'Client systems are accessed exclusively through encrypted VPNs, multi-factor authentication (MFA), and role-based permissions so agents only see what they need.',
     icon: LockKeyhole,
+    backgroundClass: 'bg-[#F1ECFA]',
   },
   {
     title: 'Clean-Desk & Endpoint Security',
     description: 'Our operations enforce strict clean-desk policies, disabled USB ports, and monitored endpoints to prevent unauthorized data downloads or screen captures.',
     icon: MonitorCheck,
+    backgroundClass: 'bg-[#EAF3FB]',
   },
   {
     title: 'AI & Global Privacy Alignment',
     description: "Workflows are designed in strict alignment with GDPR and India's DPDP Act—and we never sell or use client data to train public AI models.",
     icon: ShieldCheck,
+    backgroundClass: 'bg-[#FFF1E7]',
   },
 ];
 
@@ -28,7 +32,7 @@ export function DataSecuritySection() {
     <section id="data-security" aria-labelledby="data-security-heading" className="scroll-mt-32 py-16 md:py-24 bg-white border-t border-emerald-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center space-y-4">
-          <h2 id="data-security-heading" className="text-3xl sm:text-4xl font-extrabold text-[#044729] tracking-tight leading-tight">
+          <h2 id="data-security-heading" className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
             Enterprise-Grade Data Security &amp; Governance
           </h2>
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto">
@@ -40,7 +44,7 @@ export function DataSecuritySection() {
           {securityPillars.map((pillar) => {
             const Icon = pillar.icon;
             return (
-              <li key={pillar.title} className="rounded-2xl border border-emerald-100 bg-white p-6 sm:p-8 shadow-sm">
+              <li key={pillar.title} className={`rounded-2xl border border-emerald-100 ${pillar.backgroundClass} p-6 sm:p-8 shadow-sm`}>
                 <div className="flex items-start gap-3">
                   <div className="h-11 w-11 shrink-0 rounded-xl border border-emerald-100 bg-emerald-50 text-[#0D8A4E] flex items-center justify-center">
                     <Icon className="h-5 w-5" aria-hidden="true" />
