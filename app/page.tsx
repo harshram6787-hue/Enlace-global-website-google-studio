@@ -3,9 +3,10 @@
 import React, { useState } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
-import { WelcomeNote } from '@/components/WelcomeNote';
-import { FounderSpotlight } from '@/components/FounderSpotlight';
+import { HomeServicesOverview } from '@/components/HomeServicesOverview';
+import { HomeCompetitiveEdge } from '@/components/HomeCompetitiveEdge';
 import { PilotSection } from '@/components/PilotSection';
+import { FAQSection } from '@/components/FAQSection';
 import { Footer } from '@/components/Footer';
 import { LetsTalkModal, PILOT_SERVICE_INTEREST } from '@/components/LetsTalkModal';
 import { PlaceholderModal } from '@/components/PlaceholderModal';
@@ -29,20 +30,24 @@ export default function HomePage() {
       />
 
       {/* Main Page Sequence */}
-      <main className="flex-grow">
+      <main className="flex-grow pt-[121px]">
         {/* 2. Hero Section */}
         <Hero onOpenContact={() => setContactOpen(true)} />
 
-        {/* 3. Welcome Note */}
-        <WelcomeNote />
+        {/* 3. Services Overview */}
+        <HomeServicesOverview />
 
-        <FounderSpotlight />
+        {/* 4. Competitive Edge */}
+        <HomeCompetitiveEdge />
 
-        {/* 4. 30-Day Low-Risk Pilot */}
+        {/* 5. 30-Day Low-Risk Pilot */}
         <PilotSection onOpenContact={() => {
           setIsPilotInquiry(true);
           setContactOpen(true);
         }} />
+
+        {/* 6. FAQs */}
+        <FAQSection />
       </main>
 
       {/* Footer */}

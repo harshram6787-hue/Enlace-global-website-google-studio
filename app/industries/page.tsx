@@ -16,7 +16,6 @@ import {
   ShoppingBag,
   Landmark,
   CheckCircle2,
-  Sparkles,
   MessageSquare,
 } from 'lucide-react';
 
@@ -25,6 +24,7 @@ const industryCards = [
     id: 'energy-broadband-utilities',
     title: 'Energy, Broadband & Utilities',
     icon: Zap,
+    backgroundClass: 'bg-[#EDF7F0]',
     tagline:
       'Compliance-first customer acquisition, technical triage, and retention for energy retailers, ISPs, and comparison platforms.',
     workflows: [
@@ -46,6 +46,7 @@ const industryCards = [
     id: 'saas-tech',
     title: 'SaaS & Tech Companies',
     icon: Monitor,
+    backgroundClass: 'bg-[#F1ECFA]',
     tagline: 'Agile, AI-equipped support and SDR teams that scale alongside your product.',
     workflows: [
       {
@@ -66,6 +67,7 @@ const industryCards = [
     id: 'ecommerce-d2c',
     title: 'E-Commerce & D2C Brands',
     icon: ShoppingBag,
+    backgroundClass: 'bg-[#FFF1E7]',
     tagline: 'Fast, omnichannel customer care that turns first-time buyers into repeat loyalists.',
     workflows: [
       {
@@ -86,6 +88,7 @@ const industryCards = [
     id: 'financial-services-insurance',
     title: 'Financial Services & Insurance (Non-Advisory Support)',
     icon: Landmark,
+    backgroundClass: 'bg-[#EAF3FB]',
     tagline:
       'High-trust customer support, lead qualification, and back-office processing built on strict regulatory compliance and data governance.',
     workflows: [
@@ -122,7 +125,7 @@ export default function IndustriesPage() {
 
 
   return (
-    <main className="min-h-screen bg-slate-50/50 text-slate-800 font-sans antialiased selection:bg-emerald-100 selection:text-emerald-900 pt-20">
+    <main className="min-h-screen bg-slate-50/50 text-slate-800 font-sans antialiased selection:bg-emerald-100 selection:text-emerald-900 pt-[121px]">
       {/* Navigation */}
       <Navbar
         onOpenContact={() => setContactOpen(true)}
@@ -130,7 +133,7 @@ export default function IndustriesPage() {
       />
 
       {/* ================= 1. HERO SECTION ================= */}
-      <section className="relative py-16 md:py-24 overflow-hidden min-h-[400px] flex items-center justify-center">
+      <section className="relative min-h-[420px] md:min-h-[425px] py-10 md:py-12 overflow-hidden flex items-center justify-center">
         {/* Background Visual Image with Overlay (Matches Services Hero Style) */}
         <div className="absolute inset-0 z-0">
           <img
@@ -145,19 +148,13 @@ export default function IndustriesPage() {
         </div>
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-4 sm:space-y-6">
-          {/* Tagline Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/90 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-semibold">
-            <Sparkles className="w-4 h-4 text-emerald-600" />
-            <span>Tailored BPO & Customer Experience Solutions</span>
-          </div>
-
           {/* Main Heading */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.12]">
+          <h1 className="text-[2rem] sm:text-[2.5rem] md:text-5xl lg:text-[3.5rem] font-extrabold text-slate-900 tracking-tight leading-[1.12]">
             <span className="text-[#0D8A4E]">INDUSTRIES</span> WE SERVE
           </h1>
 
           {/* Supporting Copy */}
-          <p className="text-lg sm:text-xl md:text-2xl text-slate-800 max-w-3xl mx-auto font-medium sm:font-semibold leading-relaxed drop-shadow-sm">
+          <p className="text-base sm:text-lg md:text-xl text-slate-800 max-w-3xl mx-auto font-medium sm:font-semibold leading-relaxed drop-shadow-sm">
             We focus on high-growth, regulated industries where customer empathy, rapid response times, and strict quality governance drive measurable revenue.
           </p>
 
@@ -168,7 +165,7 @@ export default function IndustriesPage() {
               className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full text-base font-bold text-white bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 shadow-md hover:shadow-xl transform transition-all duration-200 active:scale-95 cursor-pointer"
             >
               <MessageSquare className="w-5 h-5" />
-              <span>LET&apos;S TALK</span>
+              <span>Request Callback</span>
             </button>
           </div>
         </div>
@@ -195,7 +192,7 @@ export default function IndustriesPage() {
                 <article
                   key={card.id}
                   aria-labelledby={`industry-${card.id}-heading`}
-                  className="flex flex-col p-7 sm:p-8 rounded-2xl bg-white border border-slate-200/80 hover:border-emerald-500/80 shadow-sm hover:shadow-xl transition-all duration-300 group hover:-translate-y-1"
+                  className={`flex flex-col p-7 sm:p-8 rounded-2xl ${card.backgroundClass} border border-slate-200/80 hover:border-emerald-500/80 shadow-sm hover:shadow-xl transition-all duration-300 group hover:-translate-y-1`}
                 >
                   <div className="space-y-4">
                     {/* Icon Header */}
