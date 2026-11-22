@@ -12,7 +12,6 @@ import { PlaceholderModal } from '@/components/PlaceholderModal';
 import advantagesHeroBg from '@/src/assets/images/advantages_hero_bg_1786780294215.jpg';
 
 import {
-  Sparkles,
   MessageSquare,
   Bot,
   Briefcase,
@@ -47,6 +46,7 @@ export default function AdvantagesPage() {
       shortDescription:
         'Pair empathetic, accent-neutral Indian specialists with real-time AI agent assist to cut average handle times without sounding robotic.',
       icon: Bot,
+      backgroundClass: 'bg-[#EDF7F0]',
     },
     {
       num: '02',
@@ -54,6 +54,7 @@ export default function AdvantagesPage() {
       shortDescription:
         'Benefit from direct leadership oversight and 100% QA call and ticket auditing—no getting lost inside a massive 10,000-seat call center.',
       icon: Briefcase,
+      backgroundClass: 'bg-[#F1ECFA]',
     },
     {
       num: '03',
@@ -61,6 +62,7 @@ export default function AdvantagesPage() {
       shortDescription:
         'Achieve enterprise-grade customer support, sales, and back-office output at a fraction of US, UK, or Australian in-house hiring overhead.',
       icon: TrendingUp,
+      backgroundClass: 'bg-[#EAF3FB]',
     },
     {
       num: '04',
@@ -68,6 +70,7 @@ export default function AdvantagesPage() {
       shortDescription:
         'Start with a 2-agent 30-day pilot and scale your dedicated team up or down smoothly without rigid multi-year contract lock-ins.',
       icon: Maximize2,
+      backgroundClass: 'bg-[#FFF1E7]',
     },
     {
       num: '05',
@@ -75,6 +78,7 @@ export default function AdvantagesPage() {
       shortDescription:
         'Compliance-checked workflows built from real-world QA experience across Energy, Broadband, SaaS, E-Commerce, and Financial Support.',
       icon: Heart,
+      backgroundClass: 'bg-[#FBF7E6]',
     },
     {
       num: '06',
@@ -82,6 +86,7 @@ export default function AdvantagesPage() {
       shortDescription:
         'Get real-time CSAT metrics, sentiment tracking, and structured QA scorecards delivered directly to your team.',
       icon: BarChart3,
+      backgroundClass: 'bg-[#FCEEF3]',
     },
   ];
 
@@ -146,7 +151,7 @@ export default function AdvantagesPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-slate-50/50 text-slate-800 font-sans antialiased selection:bg-emerald-100 selection:text-emerald-900 pt-20">
+    <main className="min-h-screen bg-slate-50/50 text-slate-800 font-sans antialiased selection:bg-emerald-100 selection:text-emerald-900 pt-[121px]">
       {/* Navigation Bar */}
       <Navbar
         onOpenContact={() => setContactOpen(true)}
@@ -154,7 +159,7 @@ export default function AdvantagesPage() {
       />
 
       {/* ================= 1. HERO SECTION ================= */}
-      <section className="relative py-16 md:py-24 overflow-hidden min-h-[400px] flex items-center justify-center">
+      <section className="relative min-h-[520px] md:min-h-[475px] py-10 md:py-12 overflow-hidden flex items-center justify-center">
         {/* Background Visual Image with Overlay (Matches Services Hero Style) */}
         <div className="absolute inset-0 z-0">
           <img
@@ -170,12 +175,12 @@ export default function AdvantagesPage() {
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-4 sm:space-y-6">
           {/* Main Heading */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.12]">
-            Enterprise Execution Without the Agency Bloat
+          <h1 className="text-[2rem] sm:text-[2.5rem] md:text-5xl lg:text-[3.5rem] font-extrabold text-slate-900 tracking-tight leading-[1.12]">
+            <span className="text-[#0D8A4E]">Enterprise Execution</span> Without the Agency Bloat
           </h1>
 
           {/* Supporting Text */}
-          <p className="text-lg sm:text-xl md:text-2xl text-slate-800 max-w-3xl mx-auto font-medium sm:font-semibold leading-relaxed drop-shadow-sm">
+          <p className="text-base sm:text-lg md:text-xl text-slate-800 max-w-3xl mx-auto font-medium sm:font-semibold leading-relaxed drop-shadow-sm">
             Traditional BPO giants lock you into rigid contracts and hand your account off to junior managers. We give you dedicated Indian talent, real-time AI workflows, and direct founder accountability from day one.
           </p>
 
@@ -211,7 +216,7 @@ export default function AdvantagesPage() {
                 <article
                   key={item.num}
                   aria-labelledby={`advantage-${item.num}-heading`}
-                  className="p-7 sm:p-8 rounded-2xl bg-white border border-slate-200/80 hover:border-emerald-500/80 shadow-xs hover:shadow-lg transition-all duration-300 group hover:-translate-y-1 flex flex-col justify-between relative"
+                  className={`p-7 sm:p-8 rounded-2xl ${item.backgroundClass} border border-slate-200/80 hover:border-emerald-500/80 shadow-xs hover:shadow-lg transition-all duration-300 group hover:-translate-y-1 flex flex-col justify-between relative`}
                 >
                   <div className="space-y-4">
                     {/* Header Row: Icon & Step Number */}
@@ -244,7 +249,7 @@ export default function AdvantagesPage() {
       <section id="outsourcing-comparison" aria-labelledby="outsourcing-comparison-heading" className="py-16 md:py-24 bg-white border-t border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <div className="text-center space-y-3 max-w-4xl mx-auto">
-            <h2 id="outsourcing-comparison-heading" className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#044729] tracking-tight">
+            <h2 id="outsourcing-comparison-heading" className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
               How We Compare to Traditional Outsourcing
             </h2>
             <div className="w-16 h-1 bg-[#0D8A4E] mx-auto rounded-full" />
@@ -408,11 +413,6 @@ export default function AdvantagesPage() {
       {/* ================= 4. FINAL CTA ================= */}
       <section className="py-20 md:py-28 bg-white border-t border-slate-200/80 relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-[#0D8A4E] text-xs font-bold uppercase tracking-wider">
-            <Sparkles className="w-4 h-4" />
-            <span>Empower Your Operations</span>
-          </div>
-
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight uppercase leading-tight">
             READY TO GAIN THE ENLACE GLOBAL ADVANTAGE?
           </h2>
@@ -427,7 +427,7 @@ export default function AdvantagesPage() {
               className="inline-flex items-center justify-center gap-3 px-9 py-4 rounded-full text-base font-bold text-white bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 shadow-xl hover:shadow-2xl transform transition-all duration-200 active:scale-95 cursor-pointer"
             >
               <MessageSquare className="w-5 h-5 text-amber-300" />
-              <span>LET&apos;S TALK</span>
+              <span>Start 30 day Pilot</span>
             </button>
           </div>
         </div>
