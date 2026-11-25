@@ -33,6 +33,50 @@
   background: #059669;
 }
 
+/* Keep callback scrolling inside the modal's rounded frame. */
+.callback-modal-scroll {
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: #10B981 #F8FAFC;
+}
+
+.callback-modal-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.callback-modal-scroll::-webkit-scrollbar-track,
+.callback-modal-scroll::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+}
+
+/* A consistent, subtle highlight for content tiles across the site. */
+.tile-hover {
+  transition: border-color 240ms ease, box-shadow 240ms ease, transform 240ms ease;
+}
+
+.tile-hover:focus-within {
+  border-color: #10B981;
+  box-shadow: 0 16px 28px -12px rgb(4 71 41 / 22%), 0 6px 12px -6px rgb(4 71 41 / 14%);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tile-hover:hover {
+    border-color: #10B981;
+    box-shadow: 0 16px 28px -12px rgb(4 71 41 / 22%), 0 6px 12px -6px rgb(4 71 41 / 14%);
+    transform: translateY(-4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile-hover {
+    transition: none;
+  }
+
+  .tile-hover:hover {
+    transform: none;
+  }
+}
+
 /* Green Glow and Soft Surface Accents */
 .bg-grid-pattern {
   background-size: 40px 40px;

@@ -31,20 +31,6 @@
   letter-spacing: -1.3px;
 }
 
-.heading::before {
-  content: '';
-  display: block;
-  width: 48px;
-  height: 4px;
-  margin-bottom: 20px;
-  border-radius: 2px;
-  background: #0d8a4e;
-}
-
-.heading span {
-  color: #0d8a4e;
-}
-
 .copy p {
   margin: 0;
   color: #46564d;

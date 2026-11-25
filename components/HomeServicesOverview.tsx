@@ -24,7 +24,7 @@ const serviceGroups = [
     id: 'home-backoffice-services',
     title: 'Back Office Operations',
     icon: Workflow,
-    services: ['Order & Transaction Processing', 'Data Entry'],
+    services: ['Virtual Assistance', 'Data Entry'],
   },
 ] as const;
 
@@ -75,7 +75,7 @@ export function HomeServicesOverview() {
             </h3>
             <ul className={styles.list}>
               {services.map((service) => (
-                <li key={service} className={styles.item}>
+                <li key={service} className={`tile-hover ${styles.item}`}>
                   {service}
                 </li>
               ))}

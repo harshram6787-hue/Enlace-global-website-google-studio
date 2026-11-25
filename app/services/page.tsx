@@ -6,6 +6,9 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { LetsTalkModal } from '@/components/LetsTalkModal';
 import { PlaceholderModal } from '@/components/PlaceholderModal';
+import { VoiceSupportSlide } from '@/components/VoiceSupportSlide';
+import { ChatSupportSlide } from '@/components/ChatSupportSlide';
+import { SupportChannelSlide, type SupportChannel } from '@/components/SupportChannelSlide';
 import {
   Sparkles,
   ArrowRight,
@@ -19,10 +22,6 @@ import {
   TrendingUp,
   Calendar,
   Database,
-  CreditCard,
-  FileText,
-  Workflow,
-  FileCheck,
   Users,
   Cpu,
   LineChart,
@@ -39,9 +38,37 @@ import {
 } from 'lucide-react';
 
 import servicesHeroBg from '@/src/assets/images/bpo_services_hero_1786731450714.jpg';
-import documentProcessingImg from '@/src/assets/images/document_processing_service_1786648730469.jpg';
+import voiceSupportImg from '@/src/assets/images/services/voice-support.webp';
+import liveChatSupportImg from '@/src/assets/images/services/live-chat-support.webp';
+import emailSupportImg from '@/src/assets/images/services/email-support.webp';
+import whatsappSupportImg from '@/src/assets/images/services/whatsapp-support.webp';
+import leadGenerationImg from '@/src/assets/images/services/lead-generation.webp';
+import leadQualificationImg from '@/src/assets/images/services/lead-qualification.webp';
+import salesSupportImg from '@/src/assets/images/services/sales-support.webp';
+import appointmentSettingImg from '@/src/assets/images/services/appointment-setting.webp';
+import virtualAssistanceImg from '@/src/assets/images/services/administrative-support.webp';
+import dataEntryImg from '@/src/assets/images/services/data-management-processing.webp';
 
 const integrationPlatforms = ['Zendesk', 'Salesforce', 'HubSpot', 'Freshdesk', 'Intercom', 'Zoho CRM', 'Shopify'];
+
+const backOfficeServices = [
+  {
+    id: 'virtual-assistance',
+    title: 'Virtual Assistance',
+    description: 'Get dependable help with inboxes, calendars, follow-ups, and everyday admin tasks so your team has more time for customers and projects.',
+    image: virtualAssistanceImg,
+    imageAlt: 'Illustrative virtual assistant organising files, coordinating a calendar, and managing daily admin tasks',
+    icon: Calendar,
+  },
+  {
+    id: 'data-entry',
+    title: 'Data Entry',
+    description: 'Turn information from forms, spreadsheets, and documents into accurate records your team can use in your CRM, spreadsheets, or business systems.',
+    image: dataEntryImg,
+    imageAlt: 'Illustrative data entry specialist entering and checking structured spreadsheet records',
+    icon: Database,
+  },
+] as const;
 
 const onboardingSteps = [
   {
@@ -63,6 +90,9 @@ const onboardingSteps = [
 
 export default function ServicesPage() {
   const [contactOpen, setContactOpen] = useState(false);
+  const [voiceSupportOpen, setVoiceSupportOpen] = useState(false);
+  const [chatSupportOpen, setChatSupportOpen] = useState(false);
+  const [supportChannel, setSupportChannel] = useState<SupportChannel | null>(null);
   const [placeholderData, setPlaceholderData] = useState<{ title: string; description: string } | null>(null);
   const [highlightedSection, setHighlightedSection] = useState<string | null>(null);
 
@@ -147,7 +177,7 @@ export default function ServicesPage() {
                 className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full text-base font-bold text-white bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 shadow-md hover:shadow-xl transform transition-all duration-200 active:scale-95 cursor-pointer"
               >
                 <MessageSquare className="w-5 h-5" />
-                <span>Let&apos;s Talk</span>
+                <span>Start a 30-Day Pilot</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -186,14 +216,25 @@ export default function ServicesPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               
               {/* CARD 1 — Voice Support */}
-              <div className="group bg-white rounded-2xl border border-slate-200/80 hover:border-emerald-300 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between">
+              <div className="tile-hover group bg-white rounded-2xl border border-slate-200/80 hover:border-emerald-300 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between relative">
+                <button
+                  type="button"
+                  className="absolute inset-0 z-10 cursor-pointer rounded-2xl focus-visible:outline-3 focus-visible:-outline-offset-3 focus-visible:outline-emerald-600"
+                  aria-label="Read more about Voice Support"
+                  aria-haspopup="dialog"
+                  aria-expanded={voiceSupportOpen}
+                  aria-controls={voiceSupportOpen ? 'voice-support-slide' : undefined}
+                  onClick={() => setVoiceSupportOpen(true)}
+                />
                 <div>
                   <div className="relative h-52 w-full overflow-hidden bg-slate-100">
                     <img
-                      src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80"
-                      alt="Voice Support"
+                      src={voiceSupportImg.src}
+                      alt="Illustrative support specialist wearing a headset while handling a customer call"
+                      loading="lazy"
+                      decoding="async"
                       referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-4 left-4 p-2.5 rounded-xl bg-white/90 backdrop-blur-md text-[#0D8A4E] shadow-md">
                       <Phone className="w-5 h-5" />
@@ -219,14 +260,25 @@ export default function ServicesPage() {
               </div>
 
               {/* CARD 2 — Chat Support */}
-              <div className="group bg-white rounded-2xl border border-slate-200/80 hover:border-emerald-300 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between">
+              <div className="tile-hover group bg-white rounded-2xl border border-slate-200/80 hover:border-emerald-300 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between relative">
+                <button
+                  type="button"
+                  className="absolute inset-0 z-10 cursor-pointer rounded-2xl focus-visible:outline-3 focus-visible:-outline-offset-3 focus-visible:outline-emerald-600"
+                  aria-label="Read more about Chat Support"
+                  aria-haspopup="dialog"
+                  aria-expanded={chatSupportOpen}
+                  aria-controls={chatSupportOpen ? 'chat-support-slide' : undefined}
+                  onClick={() => setChatSupportOpen(true)}
+                />
                 <div>
                   <div className="relative h-52 w-full overflow-hidden bg-slate-100">
                     <img
-                      src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80"
-                      alt="Chat Support"
+                      src={liveChatSupportImg.src}
+                      alt="Illustrative live chat specialist responding to a customer conversation on a desktop screen"
+                      loading="lazy"
+                      decoding="async"
                       referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-4 left-4 p-2.5 rounded-xl bg-white/90 backdrop-blur-md text-[#0D8A4E] shadow-md">
                       <MessageSquareText className="w-5 h-5" />
@@ -252,14 +304,25 @@ export default function ServicesPage() {
               </div>
 
               {/* CARD 3 — Email Support */}
-              <div className="group bg-white rounded-2xl border border-slate-200/80 hover:border-emerald-300 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between">
+              <div className="tile-hover group bg-white rounded-2xl border border-slate-200/80 hover:border-emerald-300 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between relative">
+                <button
+                  type="button"
+                  className="absolute inset-0 z-10 cursor-pointer rounded-2xl focus-visible:outline-3 focus-visible:-outline-offset-3 focus-visible:outline-emerald-600"
+                  aria-label="Read more about Email Support"
+                  aria-haspopup="dialog"
+                  aria-expanded={supportChannel === 'email'}
+                  aria-controls={supportChannel === 'email' ? 'email-support-slide' : undefined}
+                  onClick={() => setSupportChannel('email')}
+                />
                 <div>
                   <div className="relative h-52 w-full overflow-hidden bg-slate-100">
                     <img
-                      src="https://images.unsplash.com/photo-1596524430615-b46475ddff6e?auto=format&fit=crop&w=800&q=80"
-                      alt="Email Support"
+                      src={emailSupportImg.src}
+                      alt="Illustrative email support workstation with an inbox and reply being composed"
+                      loading="lazy"
+                      decoding="async"
                       referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-4 left-4 p-2.5 rounded-xl bg-white/90 backdrop-blur-md text-[#0D8A4E] shadow-md">
                       <Mail className="w-5 h-5" />
@@ -285,14 +348,25 @@ export default function ServicesPage() {
               </div>
 
               {/* CARD 4 — WhatsApp Support */}
-              <div className="group bg-white rounded-2xl border border-slate-200/80 hover:border-emerald-300 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between">
+              <div className="tile-hover group bg-white rounded-2xl border border-slate-200/80 hover:border-emerald-300 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between relative">
+                <button
+                  type="button"
+                  className="absolute inset-0 z-10 cursor-pointer rounded-2xl focus-visible:outline-3 focus-visible:-outline-offset-3 focus-visible:outline-emerald-600"
+                  aria-label="Read more about WhatsApp Support"
+                  aria-haspopup="dialog"
+                  aria-expanded={supportChannel === 'whatsapp'}
+                  aria-controls={supportChannel === 'whatsapp' ? 'whatsapp-support-slide' : undefined}
+                  onClick={() => setSupportChannel('whatsapp')}
+                />
                 <div>
                   <div className="relative h-52 w-full overflow-hidden bg-slate-100">
                     <img
-                      src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80"
-                      alt="WhatsApp Support"
+                      src={whatsappSupportImg.src}
+                      alt="Illustrative customer support conversation using green message bubbles on a smartphone"
+                      loading="lazy"
+                      decoding="async"
                       referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-4 left-4 p-2.5 rounded-xl bg-white/90 backdrop-blur-md text-[#0D8A4E] shadow-md">
                       <Smartphone className="w-5 h-5" />
@@ -354,14 +428,25 @@ export default function ServicesPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               
               {/* CARD 1 — Lead Generation */}
-              <div className="group bg-white rounded-2xl border border-slate-200/80 hover:border-emerald-300 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between">
+              <div className="tile-hover group bg-white rounded-2xl border border-slate-200/80 hover:border-emerald-300 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between relative">
+                <button
+                  type="button"
+                  className="absolute inset-0 z-10 cursor-pointer rounded-2xl focus-visible:outline-3 focus-visible:-outline-offset-3 focus-visible:outline-emerald-600"
+                  aria-label="Read more about Lead Generation"
+                  aria-haspopup="dialog"
+                  aria-expanded={supportChannel === 'lead-generation'}
+                  aria-controls={supportChannel === 'lead-generation' ? 'lead-generation-support-slide' : undefined}
+                  onClick={() => setSupportChannel('lead-generation')}
+                />
                 <div>
                   <div className="relative h-52 w-full overflow-hidden bg-slate-100">
                     <img
-                      src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
-                      alt="Lead Generation"
+                      src={leadGenerationImg.src}
+                      alt="Illustrative specialist researching prospective customers in a CRM prospect list"
+                      loading="lazy"
+                      decoding="async"
                       referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-4 left-4 p-2.5 rounded-xl bg-white/90 backdrop-blur-md text-[#0D8A4E] shadow-md">
                       <Target className="w-5 h-5" />
@@ -387,14 +472,25 @@ export default function ServicesPage() {
               </div>
 
               {/* CARD 2 — Lead Qualification */}
-              <div className="group bg-white rounded-2xl border border-slate-200/80 hover:border-emerald-300 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between">
+              <div className="tile-hover group bg-white rounded-2xl border border-slate-200/80 hover:border-emerald-300 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between relative">
+                <button
+                  type="button"
+                  className="absolute inset-0 z-10 cursor-pointer rounded-2xl focus-visible:outline-3 focus-visible:-outline-offset-3 focus-visible:outline-emerald-600"
+                  aria-label="Read more about Lead Qualification"
+                  aria-haspopup="dialog"
+                  aria-expanded={supportChannel === 'lead-qualification'}
+                  aria-controls={supportChannel === 'lead-qualification' ? 'lead-qualification-support-slide' : undefined}
+                  onClick={() => setSupportChannel('lead-qualification')}
+                />
                 <div>
                   <div className="relative h-52 w-full overflow-hidden bg-slate-100">
                     <img
-                      src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80"
-                      alt="Lead Qualification"
+                      src={leadQualificationImg.src}
+                      alt="Illustrative analyst reviewing a prospect qualification checklist with green checkmarks"
+                      loading="lazy"
+                      decoding="async"
                       referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-4 left-4 p-2.5 rounded-xl bg-white/90 backdrop-blur-md text-[#0D8A4E] shadow-md">
                       <CheckCircle2 className="w-5 h-5" />
@@ -420,14 +516,25 @@ export default function ServicesPage() {
               </div>
 
               {/* CARD 3 — Sales Support */}
-              <div className="group bg-white rounded-2xl border border-slate-200/80 hover:border-emerald-300 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between">
+              <div className="tile-hover group bg-white rounded-2xl border border-slate-200/80 hover:border-emerald-300 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between relative">
+                <button
+                  type="button"
+                  className="absolute inset-0 z-10 cursor-pointer rounded-2xl focus-visible:outline-3 focus-visible:-outline-offset-3 focus-visible:outline-emerald-600"
+                  aria-label="Read more about Sales Support"
+                  aria-haspopup="dialog"
+                  aria-expanded={supportChannel === 'sales-support'}
+                  aria-controls={supportChannel === 'sales-support' ? 'sales-support-support-slide' : undefined}
+                  onClick={() => setSupportChannel('sales-support')}
+                />
                 <div>
                   <div className="relative h-52 w-full overflow-hidden bg-slate-100">
                     <img
-                      src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80"
-                      alt="Sales Support"
+                      src={salesSupportImg.src}
+                      alt="Illustrative sales support specialist on a headset call reviewing a customer quotation"
+                      loading="lazy"
+                      decoding="async"
                       referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-4 left-4 p-2.5 rounded-xl bg-white/90 backdrop-blur-md text-[#0D8A4E] shadow-md">
                       <TrendingUp className="w-5 h-5" />
@@ -453,14 +560,25 @@ export default function ServicesPage() {
               </div>
 
               {/* CARD 4 — Appointment Setting */}
-              <div className="group bg-white rounded-2xl border border-slate-200/80 hover:border-emerald-300 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between">
+              <div className="tile-hover group bg-white rounded-2xl border border-slate-200/80 hover:border-emerald-300 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between relative">
+                <button
+                  type="button"
+                  className="absolute inset-0 z-10 cursor-pointer rounded-2xl focus-visible:outline-3 focus-visible:-outline-offset-3 focus-visible:outline-emerald-600"
+                  aria-label="Read more about Appointment Setting"
+                  aria-haspopup="dialog"
+                  aria-expanded={supportChannel === 'appointment-setting'}
+                  aria-controls={supportChannel === 'appointment-setting' ? 'appointment-setting-support-slide' : undefined}
+                  onClick={() => setSupportChannel('appointment-setting')}
+                />
                 <div>
                   <div className="relative h-52 w-full overflow-hidden bg-slate-100">
                     <img
-                      src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=800&q=80"
-                      alt="Appointment Setting"
+                      src={appointmentSettingImg.src}
+                      alt="Illustrative appointment coordinator arranging a meeting on a digital weekly calendar"
+                      loading="lazy"
+                      decoding="async"
                       referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover object-[center_40%] group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-4 left-4 p-2.5 rounded-xl bg-white/90 backdrop-blur-md text-[#0D8A4E] shadow-md">
                       <Calendar className="w-5 h-5" />
@@ -514,188 +632,60 @@ export default function ServicesPage() {
               </h2>
 
               <p className="text-lg text-slate-600 font-normal leading-relaxed">
-                Offload repetitive data entry, billing reconciliation, order processing, and CRM hygiene with high accuracy and zero operational bottlenecks.
+                Dependable support for everyday admin work and accurate records in the tools your team already uses.
               </p>
             </div>
 
-            {/* 5 Cards Layout (Top 3, Bottom 2 centered) */}
-            <div className="space-y-8">
-              
-              {/* Top Row: 3 Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                {/* CARD 1 — Data Management & Processing */}
-                <div className="group bg-white rounded-2xl border border-slate-200/80 hover:border-emerald-300 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between">
-                  <div>
-                    <div className="relative h-48 w-full overflow-hidden bg-slate-100">
-                      <img
-                        src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80"
-                        alt="Data Management & Processing"
-                        referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute top-4 left-4 p-2.5 rounded-xl bg-white/90 backdrop-blur-md text-[#0D8A4E] shadow-md">
-                        <Database className="w-5 h-5" />
-                      </div>
-                    </div>
+            {/* Back Office Service Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {backOfficeServices.map((service) => {
+                const Icon = service.icon;
+                const isOpen = supportChannel === service.id;
 
-                    <div className="p-6 space-y-4">
-                      <div className="flex flex-col gap-2">
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold w-fit">
-                          <Sparkles className="w-3.5 h-3.5 text-[#0D8A4E]" />
-                          <span>AI + Automation Enabled</span>
-                        </span>
-                        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
-                          Data Management & Processing
-                        </h3>
+                return (
+                  <div key={service.id} className="tile-hover group bg-white rounded-2xl border border-slate-200/80 hover:border-emerald-300 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between relative">
+                    <button
+                      type="button"
+                      className="absolute inset-0 z-10 cursor-pointer rounded-2xl focus-visible:outline-3 focus-visible:-outline-offset-3 focus-visible:outline-emerald-600"
+                      aria-label={'Read more about ' + service.title}
+                      aria-haspopup="dialog"
+                      aria-expanded={isOpen}
+                      aria-controls={isOpen ? service.id + '-support-slide' : undefined}
+                      onClick={() => setSupportChannel(service.id)}
+                    />
+                    <div>
+                      <div className="relative h-52 w-full overflow-hidden bg-slate-100">
+                        <img
+                          src={service.image.src}
+                          alt={service.imageAlt}
+                          loading="lazy"
+                          decoding="async"
+                          referrerPolicy="no-referrer"
+                          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute top-4 left-4 p-2.5 rounded-xl bg-white/90 backdrop-blur-md text-[#0D8A4E] shadow-md">
+                          <Icon className="w-5 h-5" />
+                        </div>
                       </div>
 
-                      <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                        Keep customer and operational records accurate, complete, and ready to use—without tying up your internal team in repetitive data entry.
-                      </p>
+                      <div className="p-6 space-y-4">
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <h3 className="text-2xl font-bold text-slate-900 tracking-tight">
+                            {service.title}
+                          </h3>
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold shrink-0">
+                            <Sparkles className="w-3.5 h-3.5 text-[#0D8A4E]" />
+                            <span>AI + Automation Enabled</span>
+                          </span>
+                        </div>
+                        <p className="text-slate-600 text-base leading-relaxed">
+                          {service.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-
-                {/* CARD 2 — Order & Transaction Processing */}
-                <div className="group bg-white rounded-2xl border border-slate-200/80 hover:border-emerald-300 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between">
-                  <div>
-                    <div className="relative h-48 w-full overflow-hidden bg-slate-100">
-                      <img
-                        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80"
-                        alt="Order & Transaction Processing"
-                        referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute top-4 left-4 p-2.5 rounded-xl bg-white/90 backdrop-blur-md text-[#0D8A4E] shadow-md">
-                        <CreditCard className="w-5 h-5" />
-                      </div>
-                    </div>
-
-                    <div className="p-6 space-y-4">
-                      <div className="flex flex-col gap-2">
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold w-fit">
-                          <Sparkles className="w-3.5 h-3.5 text-[#0D8A4E]" />
-                          <span>AI + Automation Enabled</span>
-                        </span>
-                        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
-                          Order & Transaction Processing
-                        </h3>
-                      </div>
-
-                      <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                        Keep orders moving with accurate transaction checks, prompt updates, and clear exception handling that prevents avoidable processing delays.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* CARD 3 — Administrative Support */}
-                <div className="group bg-white rounded-2xl border border-slate-200/80 hover:border-emerald-300 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between">
-                  <div>
-                    <div className="relative h-48 w-full overflow-hidden bg-slate-100">
-                      <img
-                        src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80"
-                        alt="Administrative Support"
-                        referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute top-4 left-4 p-2.5 rounded-xl bg-white/90 backdrop-blur-md text-[#0D8A4E] shadow-md">
-                        <FileText className="w-5 h-5" />
-                      </div>
-                    </div>
-
-                    <div className="p-6 space-y-4">
-                      <div className="flex flex-col gap-2">
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold w-fit">
-                          <Sparkles className="w-3.5 h-3.5 text-[#0D8A4E]" />
-                          <span>AI + Automation Enabled</span>
-                        </span>
-                        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
-                          Administrative Support
-                        </h3>
-                      </div>
-
-                      <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                        Give your team more time for customers by handling routine scheduling, document updates, and day-to-day administrative work.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-              {/* Bottom Row: 2 Cards (Centered on large screens) */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                
-                {/* CARD 4 — Workflow & Process Support */}
-                <div className="group bg-white rounded-2xl border border-slate-200/80 hover:border-emerald-300 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between">
-                  <div>
-                    <div className="relative h-48 w-full overflow-hidden bg-slate-100">
-                      <img
-                        src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
-                        alt="Workflow & Process Support"
-                        referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute top-4 left-4 p-2.5 rounded-xl bg-white/90 backdrop-blur-md text-[#0D8A4E] shadow-md">
-                        <Workflow className="w-5 h-5" />
-                      </div>
-                    </div>
-
-                    <div className="p-6 space-y-4">
-                      <div className="flex flex-col gap-2">
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold w-fit">
-                          <Sparkles className="w-3.5 h-3.5 text-[#0D8A4E]" />
-                          <span>AI + Automation Enabled</span>
-                        </span>
-                        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
-                          Workflow & Process Support
-                        </h3>
-                      </div>
-
-                      <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                        Remove handoff delays and recurring process bottlenecks so work moves smoothly between teams and systems.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* CARD 5 — Document Processing */}
-                <div className="group bg-white rounded-2xl border border-slate-200/80 hover:border-emerald-300 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between">
-                  <div>
-                    <div className="relative h-48 w-full overflow-hidden bg-slate-100">
-                      <img
-                        src={documentProcessingImg.src}
-                        alt="Document Processing"
-                        referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute top-4 left-4 p-2.5 rounded-xl bg-white/90 backdrop-blur-md text-[#0D8A4E] shadow-md">
-                        <FileCheck className="w-5 h-5" />
-                      </div>
-                    </div>
-
-                    <div className="p-6 space-y-4">
-                      <div className="flex flex-col gap-2">
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold w-fit">
-                          <Sparkles className="w-3.5 h-3.5 text-[#0D8A4E]" />
-                          <span>AI + Automation Enabled</span>
-                        </span>
-                        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
-                          Document Processing
-                        </h3>
-                      </div>
-
-                      <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                        Turn incoming documents into complete, accurate records with clear checks and routing that reduce rework and speed up decisions.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
+                );
+              })}
             </div>
 
           </div>
@@ -738,7 +728,7 @@ export default function ServicesPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
               
               {/* 01 Omnichannel Support */}
-              <div className="bg-white rounded-xl p-5 sm:p-6 border border-emerald-100/90 shadow-xs hover:border-emerald-300 hover:shadow-sm transition-all duration-200 flex items-start gap-4">
+              <div className="tile-hover bg-white rounded-xl p-5 sm:p-6 border border-emerald-100/90 shadow-xs hover:border-emerald-300 hover:shadow-sm transition-all duration-200 flex items-start gap-4">
                 <div className="w-11 h-11 rounded-lg bg-emerald-50 text-[#0D8A4E] flex items-center justify-center shrink-0 border border-emerald-100/80">
                   <MessagesSquare className="w-5 h-5 stroke-[1.75]" />
                 </div>
@@ -757,7 +747,7 @@ export default function ServicesPage() {
               </div>
 
               {/* 02 Remote Delivery */}
-              <div className="bg-white rounded-xl p-5 sm:p-6 border border-emerald-100/90 shadow-xs hover:border-emerald-300 hover:shadow-sm transition-all duration-200 flex items-start gap-4">
+              <div className="tile-hover bg-white rounded-xl p-5 sm:p-6 border border-emerald-100/90 shadow-xs hover:border-emerald-300 hover:shadow-sm transition-all duration-200 flex items-start gap-4">
                 <div className="w-11 h-11 rounded-lg bg-emerald-50 text-[#0D8A4E] flex items-center justify-center shrink-0 border border-emerald-100/80">
                   <Laptop className="w-5 h-5 stroke-[1.75]" />
                 </div>
@@ -776,7 +766,7 @@ export default function ServicesPage() {
               </div>
 
               {/* 03 24/7 Support */}
-              <div className="bg-white rounded-xl p-5 sm:p-6 border border-emerald-100/90 shadow-xs hover:border-emerald-300 hover:shadow-sm transition-all duration-200 flex items-start gap-4">
+              <div className="tile-hover bg-white rounded-xl p-5 sm:p-6 border border-emerald-100/90 shadow-xs hover:border-emerald-300 hover:shadow-sm transition-all duration-200 flex items-start gap-4">
                 <div className="w-11 h-11 rounded-lg bg-emerald-50 text-[#0D8A4E] flex items-center justify-center shrink-0 border border-emerald-100/80">
                   <Clock className="w-5 h-5 stroke-[1.75]" />
                 </div>
@@ -795,7 +785,7 @@ export default function ServicesPage() {
               </div>
 
               {/* 04 AI & Automation */}
-              <div className="bg-white rounded-xl p-5 sm:p-6 border border-emerald-100/90 shadow-xs hover:border-emerald-300 hover:shadow-sm transition-all duration-200 flex items-start gap-4">
+              <div className="tile-hover bg-white rounded-xl p-5 sm:p-6 border border-emerald-100/90 shadow-xs hover:border-emerald-300 hover:shadow-sm transition-all duration-200 flex items-start gap-4">
                 <div className="w-11 h-11 rounded-lg bg-emerald-50 text-[#0D8A4E] flex items-center justify-center shrink-0 border border-emerald-100/80">
                   <Bot className="w-5 h-5 stroke-[1.75]" />
                 </div>
@@ -814,7 +804,7 @@ export default function ServicesPage() {
               </div>
 
               {/* 05 Multilingual Support */}
-              <div className="bg-white rounded-xl p-5 sm:p-6 border border-emerald-100/90 shadow-xs hover:border-emerald-300 hover:shadow-sm transition-all duration-200 flex items-start gap-4">
+              <div className="tile-hover bg-white rounded-xl p-5 sm:p-6 border border-emerald-100/90 shadow-xs hover:border-emerald-300 hover:shadow-sm transition-all duration-200 flex items-start gap-4">
                 <div className="w-11 h-11 rounded-lg bg-emerald-50 text-[#0D8A4E] flex items-center justify-center shrink-0 border border-emerald-100/80">
                   <Languages className="w-5 h-5 stroke-[1.75]" />
                 </div>
@@ -833,7 +823,7 @@ export default function ServicesPage() {
               </div>
 
               {/* 06 Scalable Operations */}
-              <div className="bg-white rounded-xl p-5 sm:p-6 border border-emerald-100/90 shadow-xs hover:border-emerald-300 hover:shadow-sm transition-all duration-200 flex items-start gap-4">
+              <div className="tile-hover bg-white rounded-xl p-5 sm:p-6 border border-emerald-100/90 shadow-xs hover:border-emerald-300 hover:shadow-sm transition-all duration-200 flex items-start gap-4">
                 <div className="w-11 h-11 rounded-lg bg-emerald-50 text-[#0D8A4E] flex items-center justify-center shrink-0 border border-emerald-100/80">
                   <TrendingUp className="w-5 h-5 stroke-[1.75]" />
                 </div>
@@ -874,7 +864,7 @@ export default function ServicesPage() {
                 className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full text-base font-bold text-white bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 shadow-lg hover:shadow-2xl transform transition-all duration-200 active:scale-95 cursor-pointer"
               >
                 <MessageSquare className="w-5 h-5" />
-                <span>Let&apos;s Talk</span>
+                <span>Request Callback</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -927,6 +917,10 @@ export default function ServicesPage() {
       />
 
       {/* Modals */}
+      <VoiceSupportSlide isOpen={voiceSupportOpen} onClose={() => setVoiceSupportOpen(false)} />
+      <ChatSupportSlide isOpen={chatSupportOpen} onClose={() => setChatSupportOpen(false)} />
+      <SupportChannelSlide channel={supportChannel} onClose={() => setSupportChannel(null)} />
+
       <LetsTalkModal
         isOpen={contactOpen}
         onClose={() => setContactOpen(false)}

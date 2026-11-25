@@ -165,7 +165,7 @@ export default function IndustriesPage() {
               className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full text-base font-bold text-white bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 shadow-md hover:shadow-xl transform transition-all duration-200 active:scale-95 cursor-pointer"
             >
               <MessageSquare className="w-5 h-5" />
-              <span>Request Callback</span>
+              <span>Start a 30-Day Pilot</span>
             </button>
           </div>
         </div>
@@ -192,7 +192,7 @@ export default function IndustriesPage() {
                 <article
                   key={card.id}
                   aria-labelledby={`industry-${card.id}-heading`}
-                  className={`flex flex-col p-7 sm:p-8 rounded-2xl ${card.backgroundClass} border border-slate-200/80 hover:border-emerald-500/80 shadow-sm hover:shadow-xl transition-all duration-300 group hover:-translate-y-1`}
+                  className={`tile-hover flex flex-col p-7 sm:p-8 rounded-2xl ${card.backgroundClass} border border-slate-200/80 hover:border-emerald-500/80 shadow-sm hover:shadow-xl transition-all duration-300 group`}
                 >
                   <div className="space-y-4">
                     {/* Icon Header */}

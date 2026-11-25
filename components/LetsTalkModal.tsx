@@ -9,9 +9,11 @@ interface LetsTalkModalProps {
   isOpen: boolean;
   onClose: () => void;
   initialServiceInterest?: string;
+  inline?: boolean;
+  heading?: string;
 }
 
-export function LetsTalkModal({ isOpen, onClose, initialServiceInterest = 'Customer Experience' }: LetsTalkModalProps) {
+export function LetsTalkModal({ isOpen, onClose, initialServiceInterest = 'Customer Experience', inline = false, heading = 'Request Callback' }: LetsTalkModalProps) {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -67,18 +69,19 @@ export function LetsTalkModal({ isOpen, onClose, initialServiceInterest = 'Custo
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="bg-white rounded-2xl max-w-lg w-full max-h-[calc(100dvh-2rem)] sm:max-h-[calc(100dvh-3rem)] p-6 sm:p-8 shadow-2xl border border-emerald-100 relative overflow-y-auto">
+    <div className={inline ? 'w-full' : 'fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200'}>
+      <div className={inline ? 'bg-white rounded-3xl w-full p-6 sm:p-8 shadow-lg border border-emerald-100' : 'bg-white rounded-2xl max-w-lg w-full max-h-[calc(100dvh-2rem)] sm:max-h-[calc(100dvh-3rem)] p-2 shadow-2xl border border-emerald-100 relative overflow-hidden flex flex-col'}>
         
         {/* Close button */}
-        <button
+        {!inline && <button
           onClick={resetAndClose}
-          className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
+          className="absolute top-5 right-5 z-10 p-2 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
           aria-label="Close dialog"
         >
           <X className="w-5 h-5" />
-        </button>
+        </button>}
 
+        <div className={inline ? undefined : 'callback-modal-scroll min-h-0 overflow-y-auto overscroll-contain rounded-xl px-4 py-4 sm:px-6 sm:py-6'}>
         {submitted ? (
           <div className="text-center py-8 space-y-4">
             <div className="w-16 h-16 bg-emerald-100 text-[#0D8A4E] rounded-full flex items-center justify-center mx-auto shadow-inner">
@@ -99,8 +102,8 @@ export function LetsTalkModal({ isOpen, onClose, initialServiceInterest = 'Custo
           </div>
         ) : (
           <div className="space-y-6">
-            <div>
-              <h3 className="text-2xl font-extrabold text-slate-900">Let&apos;s Talk Business</h3>
+            <div className={inline ? undefined : 'pr-9'}>
+              <h3 className="text-2xl font-extrabold text-slate-900">{heading}</h3>
               <p className="text-xs sm:text-sm text-slate-600 mt-1">
                 Discover how Enlace Global can transform your operations with intelligent technology and skilled human talent.
               </p>
@@ -224,6 +227,7 @@ export function LetsTalkModal({ isOpen, onClose, initialServiceInterest = 'Custo
             </form>
           </div>
         )}
+        </div>
       </div>
     </div>
   );

@@ -27,7 +27,7 @@
 
 .heading span {
   display: block;
-  color: #0d8a4e;
+  color: inherit;
 }
 
 .grid {

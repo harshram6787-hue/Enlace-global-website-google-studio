@@ -44,7 +44,7 @@ export function WhyWeExist() {
           </div>
         </div>
 
-        <div className={styles.purpose}>
+        <div className={`tile-hover ${styles.purpose}`}>
           <span className={styles.purposeIcon} aria-hidden="true">
             <Compass />
           </span>

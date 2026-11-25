@@ -44,7 +44,7 @@ export function DataSecuritySection() {
           {securityPillars.map((pillar) => {
             const Icon = pillar.icon;
             return (
-              <li key={pillar.title} className={`rounded-2xl border border-emerald-100 ${pillar.backgroundClass} p-6 sm:p-8 shadow-sm`}>
+              <li key={pillar.title} className={`tile-hover rounded-2xl border border-emerald-100 ${pillar.backgroundClass} p-6 sm:p-8 shadow-sm`}>
                 <div className="flex items-start gap-3">
                   <div className="h-11 w-11 shrink-0 rounded-xl border border-emerald-100 bg-emerald-50 text-[#0D8A4E] flex items-center justify-center">
                     <Icon className="h-5 w-5" aria-hidden="true" />

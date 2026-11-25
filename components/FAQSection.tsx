@@ -40,7 +40,7 @@ const faqs = [
 
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   return (
-    <details name="enlace-faqs" className="group rounded-2xl border border-[#ccdfd1] bg-white open:border-[#96baa1]">
+    <details name="enlace-faqs" className="tile-hover group rounded-2xl border border-[#ccdfd1] bg-white open:border-[#96baa1]">
       <summary className="flex min-h-[4.5rem] cursor-pointer list-none items-center justify-between gap-4 rounded-2xl px-4 py-4 text-base font-bold leading-snug text-[#044729] hover:bg-[#f8fcf9] focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[#28734b] sm:px-6 sm:text-lg [&::-webkit-details-marker]:hidden">
         <span>{question}</span>
         <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#eaf4ed] text-[#0D8A4E]" aria-hidden="true">
