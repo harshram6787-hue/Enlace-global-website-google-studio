@@ -164,7 +164,7 @@ export default function CareerPage() {
                 return (
                   <div
                     key={item.title}
-                    className={`p-6 rounded-2xl ${item.backgroundClass} border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-emerald-300 transition-all duration-300 group flex flex-col justify-between relative overflow-hidden`}
+                    className={`tile-hover p-6 rounded-2xl ${item.backgroundClass} border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-emerald-300 transition-all duration-300 group flex flex-col justify-between relative overflow-hidden`}
                   >
                     {/* Subtle Gold/Emerald Accent Top Bar on Hover */}
                     <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 via-amber-400 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -215,7 +215,7 @@ export default function CareerPage() {
                   return (
                     <div
                       key={item.title}
-                      className={`p-6 rounded-2xl ${item.backgroundClass} border border-slate-200/80 shadow-sm hover:shadow-lg hover:border-emerald-300 transition-all duration-300 group flex items-start gap-4`}
+                      className={`tile-hover p-6 rounded-2xl ${item.backgroundClass} border border-slate-200/80 shadow-sm hover:shadow-lg hover:border-emerald-300 transition-all duration-300 group flex items-start gap-4`}
                     >
                       <div className="p-3 rounded-xl bg-emerald-100/70 text-[#0D8A4E] group-hover:scale-110 transition-transform shrink-0">
                         <IconComponent className="w-5 h-5" />
@@ -240,7 +240,7 @@ export default function CareerPage() {
                   return (
                     <div
                       key={item.title}
-                      className={`p-6 rounded-2xl ${item.backgroundClass} border border-slate-200/80 shadow-sm hover:shadow-lg hover:border-emerald-300 transition-all duration-300 group flex items-start gap-4`}
+                      className={`tile-hover p-6 rounded-2xl ${item.backgroundClass} border border-slate-200/80 shadow-sm hover:shadow-lg hover:border-emerald-300 transition-all duration-300 group flex items-start gap-4`}
                     >
                       <div className="p-3 rounded-xl bg-emerald-100/70 text-[#0D8A4E] group-hover:scale-110 transition-transform shrink-0">
                         <IconComponent className="w-5 h-5" />
