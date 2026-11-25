@@ -126,7 +126,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
               
               {/* Card 1: Vision */}
-              <div className="bg-[#EAF6EE] p-6 sm:p-8 rounded-3xl border-2 border-emerald-200/80 shadow-lg hover:border-emerald-400 transition-all flex flex-col justify-between space-y-4 relative group">
+              <div className="tile-hover bg-[#EAF6EE] p-6 sm:p-8 rounded-3xl border-2 border-emerald-200/80 shadow-lg hover:border-emerald-400 transition-all flex flex-col justify-between space-y-4 relative group">
                 <div className="space-y-3 sm:space-y-4">
                   <div className="w-12 h-12 rounded-2xl bg-[#0D8A4E] text-white flex items-center justify-center shadow-md">
                     <Eye className="w-6 h-6" />
@@ -142,7 +142,7 @@ export default function AboutPage() {
               </div>
 
               {/* Card 2: Mission */}
-              <div className="bg-[#F1ECFA] p-6 sm:p-8 rounded-3xl border-2 border-[#ded5ee] shadow-lg hover:border-emerald-400 transition-all flex flex-col justify-between space-y-4 relative group">
+              <div className="tile-hover bg-[#F1ECFA] p-6 sm:p-8 rounded-3xl border-2 border-[#ded5ee] shadow-lg hover:border-emerald-400 transition-all flex flex-col justify-between space-y-4 relative group">
                 <div className="space-y-3 sm:space-y-4">
                   <div className="w-12 h-12 rounded-2xl bg-[#0D8A4E] text-white flex items-center justify-center shadow-md">
                     <Target className="w-6 h-6" />
@@ -179,7 +179,7 @@ export default function AboutPage() {
                 return (
                   <div
                     key={val.id}
-                    className={`w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] ${val.backgroundClass} p-6 sm:p-7 rounded-2xl border border-emerald-100/90 shadow-md hover:shadow-xl hover:border-emerald-300 transition-all duration-300 flex flex-col items-start space-y-4 group`}
+                    className={`tile-hover w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] ${val.backgroundClass} p-6 sm:p-7 rounded-2xl border border-emerald-100/90 shadow-md hover:shadow-xl hover:border-emerald-300 transition-all duration-300 flex flex-col items-start space-y-4 group`}
                   >
                     <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 text-[#0D8A4E] group-hover:bg-[#0D8A4E] group-hover:text-white transition-colors duration-200 flex items-center justify-center shrink-0 shadow-xs">
                       <IconComponent className="w-6 h-6 transition-transform duration-200 group-hover:scale-105" />
@@ -221,7 +221,7 @@ export default function AboutPage() {
                 className="inline-flex items-center justify-center gap-3 px-9 py-3.5 rounded-xl text-base font-bold text-white bg-[#0D8A4E] hover:bg-[#096B3C] shadow-xl transition-all duration-200 transform active:scale-95 cursor-pointer"
               >
                 <MessageSquare className="w-5 h-5" />
-                <span>Book discover call</span>
+                <span>Request Callback</span>
                 <ArrowRight className="w-5 h-5" />
               </button>
             </div>
