@@ -216,7 +216,7 @@ export default function AdvantagesPage() {
                 <article
                   key={item.num}
                   aria-labelledby={`advantage-${item.num}-heading`}
-                  className={`p-7 sm:p-8 rounded-2xl ${item.backgroundClass} border border-slate-200/80 hover:border-emerald-500/80 shadow-xs hover:shadow-lg transition-all duration-300 group hover:-translate-y-1 flex flex-col justify-between relative`}
+                  className={`tile-hover p-7 sm:p-8 rounded-2xl ${item.backgroundClass} border border-slate-200/80 hover:border-emerald-500/80 shadow-xs hover:shadow-lg transition-all duration-300 group flex flex-col justify-between relative`}
                 >
                   <div className="space-y-4">
                     {/* Header Row: Icon & Step Number */}
@@ -303,7 +303,7 @@ export default function AdvantagesPage() {
                 const IconComp = step.icon;
                 return (
                   <React.Fragment key={step.stage}>
-                    <div className="relative p-6 rounded-2xl bg-white border border-emerald-200/90 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+                    <div className="tile-hover relative p-6 rounded-2xl bg-white border border-emerald-200/90 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
                       <div className="space-y-3">
                         <div className="flex items-center justify-between">
                           <div className="w-10 h-10 rounded-lg bg-emerald-100 text-[#0D8A4E] flex items-center justify-center font-bold">
@@ -333,7 +333,7 @@ export default function AdvantagesPage() {
               })}
 
               {/* Step 5: Final Outcome Card (Visually Stronger) */}
-              <div className="relative p-6 rounded-2xl bg-gradient-to-br from-[#0D8A4E] to-[#044729] text-white shadow-xl border-2 border-emerald-300 flex flex-col justify-between transform hover:scale-[1.02] transition-all">
+              <div className="tile-hover relative p-6 rounded-2xl bg-gradient-to-br from-[#0D8A4E] to-[#044729] text-white shadow-xl border-2 border-emerald-300 flex flex-col justify-between transform transition-all">
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <div className="w-10 h-10 rounded-lg bg-white/20 backdrop-blur-md text-amber-300 flex items-center justify-center">
@@ -359,7 +359,7 @@ export default function AdvantagesPage() {
                 const IconComp = step.icon;
                 return (
                   <div key={step.stage} className="space-y-4">
-                    <div className="p-6 rounded-2xl bg-white border border-emerald-200/90 shadow-sm flex items-start gap-4">
+                    <div className="tile-hover p-6 rounded-2xl bg-white border border-emerald-200/90 shadow-sm flex items-start gap-4">
                       <div className="w-12 h-12 rounded-xl bg-emerald-100 text-[#0D8A4E] flex items-center justify-center shrink-0">
                         <IconComp className="w-6 h-6" />
                       </div>
@@ -387,7 +387,7 @@ export default function AdvantagesPage() {
               })}
 
               {/* Final Outcome Card Vertical */}
-              <div className="p-7 rounded-2xl bg-gradient-to-br from-[#0D8A4E] to-[#044729] text-white shadow-xl border-2 border-emerald-300 space-y-3">
+              <div className="tile-hover p-7 rounded-2xl bg-gradient-to-br from-[#0D8A4E] to-[#044729] text-white shadow-xl border-2 border-emerald-300 space-y-3">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-md text-amber-300 flex items-center justify-center shrink-0">
                     <Award className="w-7 h-7" />
@@ -427,7 +427,7 @@ export default function AdvantagesPage() {
               className="inline-flex items-center justify-center gap-3 px-9 py-4 rounded-full text-base font-bold text-white bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 shadow-xl hover:shadow-2xl transform transition-all duration-200 active:scale-95 cursor-pointer"
             >
               <MessageSquare className="w-5 h-5 text-amber-300" />
-              <span>Start 30 day Pilot</span>
+              <span>Start a 30-Day Pilot</span>
             </button>
           </div>
         </div>
