@@ -27,7 +27,7 @@ const pilotHighlights = [
   {
     title: 'Founder-Led Oversight',
     backgroundClass: 'bg-[#FFF1E7]',
-    description: 'Direct weekly check-ins with Founder Harsh Kumar Ram to ensure seamless execution.',
+    description: 'Direct weekly check-ins with our founder to ensure seamless execution.',
   },
 ];
 
