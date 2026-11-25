@@ -54,7 +54,7 @@ export function HomeCompetitiveEdge() {
           {benefits.map(({ key, theme, icon: Icon, title, description }) => (
             <article
               key={key}
-              className={`${styles.card} ${styles[theme]}`}
+              className={`tile-hover ${styles.card} ${styles[theme]}`}
               aria-labelledby={`competitive-edge-${key}`}
             >
               <div className={styles.iconTile}>

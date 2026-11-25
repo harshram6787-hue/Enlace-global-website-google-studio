@@ -7,11 +7,11 @@ export function FounderSpotlight() {
   return (
     <section id="founder-spotlight" aria-labelledby="founder-heading" className="py-12 md:py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 id="founder-heading" className="text-3xl sm:text-4xl font-extrabold text-[#044729] tracking-tight leading-tight text-center">
+        <h2 id="founder-heading" className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight text-center">
           A Note from Our Founders
         </h2>
 
-        <div className="max-w-5xl mx-auto mt-8 grid grid-cols-1 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.4fr)] gap-6 md:gap-10 items-center rounded-3xl border border-emerald-100 bg-white p-6 sm:p-8 shadow-lg">
+        <div className="tile-hover max-w-5xl mx-auto mt-8 grid grid-cols-1 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.4fr)] gap-6 md:gap-10 items-center rounded-3xl border border-emerald-100 bg-white p-6 sm:p-8 shadow-lg">
           <div className="relative aspect-[4/5] w-full max-w-xs md:max-w-none mx-auto overflow-hidden rounded-2xl border border-emerald-100 bg-emerald-50 shadow-sm">
             <Image
               src={founderPhoto}
@@ -56,7 +56,7 @@ export function FounderSpotlight() {
         <article
           id="cofounder-note"
           aria-labelledby="cofounder-name"
-          className="max-w-5xl mx-auto mt-8 grid grid-cols-1 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.4fr)] gap-6 md:gap-10 items-center rounded-3xl border border-emerald-100 bg-white p-6 sm:p-8 shadow-lg"
+          className="tile-hover max-w-5xl mx-auto mt-8 grid grid-cols-1 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.4fr)] gap-6 md:gap-10 items-center rounded-3xl border border-emerald-100 bg-white p-6 sm:p-8 shadow-lg"
         >
           <div className="relative aspect-[4/5] w-full max-w-xs md:max-w-none mx-auto overflow-hidden rounded-2xl border border-emerald-100 bg-emerald-50 shadow-sm">
             <Image

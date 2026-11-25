@@ -12,6 +12,7 @@
 }
 
 .heading {
+  color: #0f172a;
   max-width: 1110px;
   margin: 0 auto 23px;
   text-align: center;
@@ -23,7 +24,7 @@
 
 .heading span {
   display: block;
-  color: #0d8a4e;
+  color: inherit;
 }
 
 .orbit {
